@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  MineViewController.swift
 //  V2EX-Swift
 //
 //  Created by 杨建祥 on 2020/11/28.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: CollectionViewController, ReactorKit.View {
+class MineViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
         static let simpleCell = ReusableCell<SimpleCell>()
@@ -15,7 +15,7 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
     
-    init(_ navigator: NavigatorType, _ reactor: HomeViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: MineViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -33,7 +33,7 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.register(Reusable.simpleCell)
     }
     
-    func bind(reactor: HomeViewReactor) {
+    func bind(reactor: MineViewReactor) {
         super.bind(reactor: reactor)
         // action
         Observable.merge([
@@ -56,7 +56,7 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: HomeViewReactor)
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: MineViewReactor)
         -> RxCollectionViewSectionedReloadDataSource<Section> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
@@ -75,7 +75,7 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
     
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+extension MineViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(
         _ collectionView: UICollectionView,
@@ -98,3 +98,4 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 
 }
+

@@ -1,5 +1,5 @@
 //
-//  HomeViewReactor.swift
+//  MineViewReactor.swift
 //  V2EX-Swift
 //
 //  Created by 杨建祥 on 2020/11/28.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -33,10 +33,10 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: stringDefault(self.title, R.string.localizable.home())
+            title: stringDefault(self.title, R.string.localizable.mine())
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:

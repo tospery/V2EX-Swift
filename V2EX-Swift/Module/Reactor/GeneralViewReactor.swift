@@ -1,5 +1,5 @@
 //
-//  HomeViewReactor.swift
+//  GeneralViewReactor.swift
 //  V2EX-Swift
 //
 //  Created by 杨建祥 on 2020/11/28.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class GeneralViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
