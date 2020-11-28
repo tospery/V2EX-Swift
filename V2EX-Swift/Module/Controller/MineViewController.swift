@@ -15,6 +15,14 @@ class MineViewController: CollectionViewController, ReactorKit.View {
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
     
+    lazy var testButton: SWFrame.Button = {
+        let button = SWFrame.Button.init(type: .custom)
+        button.backgroundColor = .red
+        button.sizeToFit()
+        button.size = .init(80)
+        return button
+    }()
+    
     init(_ navigator: NavigatorType, _ reactor: MineViewReactor) {
         defer {
             self.reactor = reactor
@@ -31,6 +39,12 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.simpleCell)
+        self.view.addSubview(self.testButton)
+        self.testButton.left = 100
+        self.testButton.top = 100
+        self.testButton.rx.tap
+            .subscribeNext(weak: self, MineViewController.tapTest)
+            .disposed(by: self.disposeBag)
     }
     
     func bind(reactor: MineViewReactor) {
@@ -54,6 +68,10 @@ class MineViewController: CollectionViewController, ReactorKit.View {
         reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
+    }
+    
+    func tapTest(event: ControlEvent<Void>.Element) {
+        self.navigator.present(Router.login.urlString)
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: MineViewReactor)

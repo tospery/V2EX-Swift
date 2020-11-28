@@ -122,14 +122,22 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
-    /// Resource file `Demo.json`.
-    static let demoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Demo", pathExtension: "json")
+    /// Resource file `SiteInfo.json`.
+    static let siteInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteInfo", pathExtension: "json")
+    /// Resource file `SiteStats.json`.
+    static let siteStatsJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteStats", pathExtension: "json")
 
-    /// `bundle.url(forResource: "Demo", withExtension: "json")`
-    static func demoJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.demoJson
+    /// `bundle.url(forResource: "SiteInfo", withExtension: "json")`
+    static func siteInfoJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.siteInfoJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "SiteStats", withExtension: "json")`
+    static func siteStatsJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.siteStatsJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -189,7 +197,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 7 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 8 localization keys.
     struct localizable {
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -197,6 +205,8 @@ struct R: Rswift.Validatable {
       static let mine = Rswift.StringResource(key: "Mine", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
       static let yes = Rswift.StringResource(key: "Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 登录
+      static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录即表示同意
       static let loginExpression = Rswift.StringResource(key: "Login.Expression", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
@@ -243,6 +253,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Yes", bundle: bundle, comment: "")
+      }
+
+      /// Value: 登录
+      static func login(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Login", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Login"
+        }
+
+        return NSLocalizedString("Login", bundle: bundle, comment: "")
       }
 
       /// Value: 登录即表示同意

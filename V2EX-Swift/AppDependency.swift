@@ -60,7 +60,12 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        
+//        self.provider.siteInfo().asObservable().subscribe(onNext: { info in
+//            log("info = \(info)")
+//        }, onError: { error in
+//            log("error = \(error)")
+//        }).disposed(by: self.disposeBag)
+        // log("url = \(Router.login.urlString)")
     }
     
     // MARK: - Lifecycle
