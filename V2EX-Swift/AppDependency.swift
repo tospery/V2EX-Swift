@@ -46,20 +46,16 @@ final class AppDependency: AppDependencyType {
         self.navigator = Navigator.init()
         self.provider = Provider.init()
     }
-    
-    deinit {
-    }
 
     func initialScreen(with window: inout UIWindow?) {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         self.window = window
 
-//        let reactor = UpdateViewReactor(self.provider, nil)
-//        let controller = UpdateViewController(self.navigator, reactor)
-//        let navigationController = NavigationController.init(rootViewController: controller)
-//        self.window.rootViewController = navigationController
-//        self.window.makeKeyAndVisible()
+        let reactor = TabBarReactor(self.provider, nil)
+        let controller = TabBarController(self.navigator, reactor)
+        self.window.rootViewController = controller
+        self.window.makeKeyAndVisible()
     }
     
     // MARK: - Test
@@ -67,22 +63,26 @@ final class AppDependency: AppDependencyType {
         
     }
     
-    // MARK: - Application
-    func application(_ application: UIApplication,
-                     entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+    // MARK: - Lifecycle
+    func application(
+        _ application: UIApplication,
+        entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) {
         Runtime.work()
         Library.setup()
         Appearance.config()
         Router.initialize(self.provider, self.navigator)
     }
 
-    func application(_ application: UIApplication,
-                     leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        #if DEBUG
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.test(launchOptions: launchOptions)
+    func application(
+        _ application: UIApplication,
+        leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) {
+        if UIApplication.shared.channel == .develop {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.test(launchOptions: launchOptions)
+            }
         }
-        #endif
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -102,12 +102,20 @@ final class AppDependency: AppDependencyType {
     }
     
     // MARK: - URL
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any]
+    ) -> Bool {
         return true
     }
 
     // MARK: - userActivity
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+    ) -> Bool {
         return true
     }
     

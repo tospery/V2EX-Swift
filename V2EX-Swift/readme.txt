@@ -8,3 +8,4 @@ info.plist
 Router
 weak/strong
 实时性能检测
+本地网络权限
