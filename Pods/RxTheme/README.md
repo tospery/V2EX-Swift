@@ -120,6 +120,7 @@ themeService.attrsStream
 - barStyle
 - barTintColor
 - titleTextAttributes
+- largeTitleTextAttributes
 
 ##### UIPageControl
 
@@ -131,11 +132,16 @@ themeService.attrsStream
 - progressTintColor
 - trackTintColor
 
+
 ##### UISearchBar
 
 - barStyle
 - barTintColor
 - keyboardAppearance
+
+##### UISegmentControl
+
+- selectedSegmentTintColor
 
 ##### UISlider
 
@@ -269,3 +275,4 @@ duan, wddwyss@gmail.com
 ## License
 
 RxTheme is available under the MIT license. See the LICENSE file for more info.
+
