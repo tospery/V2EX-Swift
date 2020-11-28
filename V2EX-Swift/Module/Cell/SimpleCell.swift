@@ -131,4 +131,3 @@ class SimpleCell: CollectionCell, ReactorKit.View {
     }
 
 }
-

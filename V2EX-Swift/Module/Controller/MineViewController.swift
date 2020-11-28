@@ -59,7 +59,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: MineViewReactor)
         -> RxCollectionViewSectionedReloadDataSource<Section> {
         return .init(
-            configureCell: { dataSource, collectionView, indexPath, sectionItem in
+            configureCell: { _, collectionView, indexPath, sectionItem in
                 switch sectionItem {
                 case .simple(let item):
                     let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
@@ -67,7 +67,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                     return cell
                 }
             },
-            configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
+            configureSupplementaryView: { _, collectionView, kind, indexPath in
                 return collectionView.emptyView(for: indexPath, kind: kind)
             }
         )
@@ -98,4 +98,3 @@ extension MineViewController: UICollectionViewDelegateFlowLayout {
     }
 
 }
-

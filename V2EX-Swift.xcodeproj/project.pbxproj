@@ -20,7 +20,6 @@
 		793B50A225718D0B0081C55E /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50A125718D0B0081C55E /* HomeViewReactor.swift */; };
 		793B50A725718D820081C55E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50A625718D820081C55E /* User.swift */; };
 		793B50AA25718DBD0081C55E /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50A925718DBD0081C55E /* Preference.swift */; };
-		793B50AE25718E0A0081C55E /* StorageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50AD25718E0A0081C55E /* StorageExt.swift */; };
 		793B50B125718E690081C55E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B025718E690081C55E /* HomeViewController.swift */; };
 		793B50B425718F290081C55E /* StorableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B325718F290081C55E /* StorableExt.swift */; };
 		793B50B7257195AB0081C55E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B6257195AB0081C55E /* Theme.swift */; };
@@ -65,7 +64,6 @@
 		793B50A125718D0B0081C55E /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
 		793B50A625718D820081C55E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		793B50A925718DBD0081C55E /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
-		793B50AD25718E0A0081C55E /* StorageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageExt.swift; sourceTree = "<group>"; };
 		793B50B025718E690081C55E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		793B50B325718F290081C55E /* StorableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableExt.swift; sourceTree = "<group>"; };
 		793B50B6257195AB0081C55E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -260,7 +258,6 @@
 		793B50AC25718DFB0081C55E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				793B50AD25718E0A0081C55E /* StorageExt.swift */,
 				793B50B325718F290081C55E /* StorableExt.swift */,
 				79B05F6A2571BC87001339B0 /* UIApplicationExt.swift */,
 				79B05F6D2571BCCC001339B0 /* BaseViewControllerExt.swift */,
@@ -467,7 +464,6 @@
 			files = (
 				793B509D25718CB70081C55E /* CollectionViewController.swift in Sources */,
 				79B05F532571B9DE001339B0 /* MineViewController.swift in Sources */,
-				793B50AE25718E0A0081C55E /* StorageExt.swift in Sources */,
 				79B05EFF2571B188001339B0 /* R.generated.swift in Sources */,
 				79B05F5F2571BBB3001339B0 /* Runtime.swift in Sources */,
 				79B05F622571BBBE001339B0 /* Router.swift in Sources */,

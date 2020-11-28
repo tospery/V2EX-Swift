@@ -12,7 +12,7 @@ target 'V2EX-Swift' do
   pod 'RxGesture', '3.0.2'
   pod 'RxTheme', '4.1.1'
   pod 'DefaultsKit', '0.2.0'
-  pod 'Cache', '5.3.0'
+  pod 'Cache', '6.0.0'
   pod 'SwiftEntryKit', '1.2.6'
   pod 'IQKeyboardManagerSwift', '6.5.6'
   pod 'ReusableKit/RxSwift', '3.0.0'
@@ -27,3 +27,10 @@ target 'V2EX-Swift' do
 
 end
 
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+        end
+    end
+end
