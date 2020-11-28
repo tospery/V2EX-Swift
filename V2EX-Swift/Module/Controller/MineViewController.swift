@@ -43,7 +43,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
         self.testButton.left = 100
         self.testButton.top = 100
         self.testButton.rx.tap
-            .subscribeNext(weak: self, MineViewController.tapTest)
+            .subscribeNext(weak: self, type(of: self).tapTest)
             .disposed(by: self.disposeBag)
     }
     
@@ -71,7 +71,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     }
     
     func tapTest(event: ControlEvent<Void>.Element) {
-        self.navigator.present(Router.login.urlString)
+        self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: MineViewReactor)

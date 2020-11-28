@@ -66,6 +66,8 @@ final class AppDependency: AppDependencyType {
 //            log("error = \(error)")
 //        }).disposed(by: self.disposeBag)
         // log("url = \(Router.login.urlString)")
+        let back = UIImage.back
+        log("")
     }
     
     // MARK: - Lifecycle
