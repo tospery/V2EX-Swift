@@ -46,6 +46,7 @@
 		79B05F682571BBD6001339B0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B05F672571BBD6001339B0 /* Error.swift */; };
 		79B05F6B2571BC87001339B0 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B05F6A2571BC87001339B0 /* UIApplicationExt.swift */; };
 		79B05F6E2571BCCC001339B0 /* BaseViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B05F6D2571BCCC001339B0 /* BaseViewControllerExt.swift */; };
+		79BBEE7F257236FA002D9A47 /* QMUIConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BBEE7E257236FA002D9A47 /* QMUIConfigurationTemplate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,8 @@
 		79B05F672571BBD6001339B0 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		79B05F6A2571BC87001339B0 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		79B05F6D2571BCCC001339B0 /* BaseViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerExt.swift; sourceTree = "<group>"; };
+		79BBEE7D257236F9002D9A47 /* QMUIConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUIConfigurationTemplate.h; sourceTree = "<group>"; };
+		79BBEE7E257236FA002D9A47 /* QMUIConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfigurationTemplate.m; sourceTree = "<group>"; };
 		E90E31DD998B17882177ED44 /* Pods-V2EX-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2EX-Swift.release.xcconfig"; path = "Target Support Files/Pods-V2EX-Swift/Pods-V2EX-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		F35B22B7183BD34C3CECFD48 /* Pods-V2EX-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2EX-Swift.debug.xcconfig"; path = "Target Support Files/Pods-V2EX-Swift/Pods-V2EX-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		FC44CCA77BE193A66A3DFDBE /* Pods_V2EX_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_V2EX_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +271,8 @@
 		79B05ECC2571AD76001339B0 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				79BBEE7D257236F9002D9A47 /* QMUIConfigurationTemplate.h */,
+				79BBEE7E257236FA002D9A47 /* QMUIConfigurationTemplate.m */,
 				79B05ECD2571AD87001339B0 /* OCHelper.h */,
 				79B05ECE2571AD87001339B0 /* OCHelper.m */,
 			);
@@ -464,6 +469,7 @@
 			files = (
 				793B509D25718CB70081C55E /* CollectionViewController.swift in Sources */,
 				79B05F532571B9DE001339B0 /* MineViewController.swift in Sources */,
+				79BBEE7F257236FA002D9A47 /* QMUIConfigurationTemplate.m in Sources */,
 				79B05EFF2571B188001339B0 /* R.generated.swift in Sources */,
 				79B05F5F2571BBB3001339B0 /* Runtime.swift in Sources */,
 				79B05F622571BBBE001339B0 /* Router.swift in Sources */,
