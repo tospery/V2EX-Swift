@@ -34,6 +34,7 @@
 		793B50B125718E690081C55E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B025718E690081C55E /* HomeViewController.swift */; };
 		793B50B425718F290081C55E /* StorableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B325718F290081C55E /* StorableExt.swift */; };
 		793B50B7257195AB0081C55E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B6257195AB0081C55E /* Theme.swift */; };
+		796A6F3925725D6D006E1B95 /* Signin.html in Resources */ = {isa = PBXBuildFile; fileRef = 796A6F3825725D6D006E1B95 /* Signin.html */; };
 		79B05EC82571AD02001339B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B05EC72571AD02001339B0 /* Localizable.strings */; };
 		79B05ECF2571AD87001339B0 /* OCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B05ECE2571AD87001339B0 /* OCHelper.m */; };
 		79B05EFF2571B188001339B0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B05EFE2571B188001339B0 /* R.generated.swift */; };
@@ -90,6 +91,7 @@
 		793B50B025718E690081C55E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		793B50B325718F290081C55E /* StorableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableExt.swift; sourceTree = "<group>"; };
 		793B50B6257195AB0081C55E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		796A6F3825725D6D006E1B95 /* Signin.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin.html; sourceTree = "<group>"; };
 		79B05EBD2571AC1B001339B0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		79B05EC72571AD02001339B0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		79B05ECA2571AD3A001339B0 /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			children = (
 				7907B69E2572491100EF94F0 /* SiteStats.json */,
 				7907B6A32572492200EF94F0 /* SiteInfo.json */,
+				796A6F3825725D6D006E1B95 /* Signin.html */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				796A6F3925725D6D006E1B95 /* Signin.html in Resources */,
 				79296ED6257184990002FF68 /* LaunchScreen.storyboard in Resources */,
 				79B05EC82571AD02001339B0 /* Localizable.strings in Resources */,
 				79296ED3257184990002FF68 /* Assets.xcassets in Resources */,

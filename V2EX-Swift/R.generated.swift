@@ -122,12 +122,20 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
+    /// Resource file `Signin.html`.
+    static let signinHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin", pathExtension: "html")
     /// Resource file `SiteInfo.json`.
     static let siteInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteInfo", pathExtension: "json")
     /// Resource file `SiteStats.json`.
     static let siteStatsJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteStats", pathExtension: "json")
+
+    /// `bundle.url(forResource: "Signin", withExtension: "html")`
+    static func signinHtml(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.signinHtml
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "SiteInfo", withExtension: "json")`
     static func siteInfoJson(_: Void = ()) -> Foundation.URL? {
@@ -197,22 +205,42 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 8 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 18 localization keys.
     struct localizable {
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 当前账户登录已过期，请重新登录
+      static let errorExpiredMessage = Rswift.StringResource(key: "Error.Expired.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的
       static let mine = Rswift.StringResource(key: "Mine", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 数据为空
+      static let errorEmptyMessage = Rswift.StringResource(key: "Error.Empty.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 无效的数据格式
+      static let errorInvalidFormat = Rswift.StringResource(key: "Error.InvalidFormat", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
       static let yes = Rswift.StringResource(key: "Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 服务异常
+      static let errorServerMessage = Rswift.StringResource(key: "Error.Server.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
       static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 登录即表示同意
-      static let loginExpression = Rswift.StringResource(key: "Login.Expression", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
       static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
       static let sure = Rswift.StringResource(key: "Sure", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 网络错误
+      static let errorNetworkMessage = Rswift.StringResource(key: "Error.Network.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 重试
+      static let errorEmptyTitle = Rswift.StringResource(key: "Error.Empty.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 重试
+      static let errorExpiredTitle = Rswift.StringResource(key: "Error.Expired.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 重试
+      static let errorIllegalTitle = Rswift.StringResource(key: "Error.Illegal.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 重试
+      static let errorNetworkTitle = Rswift.StringResource(key: "Error.Network.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 重试
+      static let errorServerTitle = Rswift.StringResource(key: "Error.Server.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 非法操作
+      static let errorIllegalMessage = Rswift.StringResource(key: "Error.Illegal.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首页
       static let home = Rswift.StringResource(key: "Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
@@ -229,6 +257,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("No", bundle: bundle, comment: "")
       }
 
+      /// Value: 当前账户登录已过期，请重新登录
+      static func errorExpiredMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Expired.Message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Expired.Message"
+        }
+
+        return NSLocalizedString("Error.Expired.Message", bundle: bundle, comment: "")
+      }
+
       /// Value: 我的
       static func mine(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -240,6 +281,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Mine", bundle: bundle, comment: "")
+      }
+
+      /// Value: 数据为空
+      static func errorEmptyMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Empty.Message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Empty.Message"
+        }
+
+        return NSLocalizedString("Error.Empty.Message", bundle: bundle, comment: "")
+      }
+
+      /// Value: 无效的数据格式
+      static func errorInvalidFormat(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.InvalidFormat", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.InvalidFormat"
+        }
+
+        return NSLocalizedString("Error.InvalidFormat", bundle: bundle, comment: "")
       }
 
       /// Value: 是
@@ -255,6 +322,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Yes", bundle: bundle, comment: "")
       }
 
+      /// Value: 服务异常
+      static func errorServerMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Server.Message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Server.Message"
+        }
+
+        return NSLocalizedString("Error.Server.Message", bundle: bundle, comment: "")
+      }
+
       /// Value: 登录
       static func login(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -266,19 +346,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Login", bundle: bundle, comment: "")
-      }
-
-      /// Value: 登录即表示同意
-      static func loginExpression(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Login.Expression", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Login.Expression"
-        }
-
-        return NSLocalizedString("Login.Expression", bundle: bundle, comment: "")
       }
 
       /// Value: 确定
@@ -305,6 +372,97 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Sure", bundle: bundle, comment: "")
+      }
+
+      /// Value: 网络错误
+      static func errorNetworkMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Network.Message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Network.Message"
+        }
+
+        return NSLocalizedString("Error.Network.Message", bundle: bundle, comment: "")
+      }
+
+      /// Value: 重试
+      static func errorEmptyTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Empty.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Empty.Title"
+        }
+
+        return NSLocalizedString("Error.Empty.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 重试
+      static func errorExpiredTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Expired.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Expired.Title"
+        }
+
+        return NSLocalizedString("Error.Expired.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 重试
+      static func errorIllegalTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Illegal.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Illegal.Title"
+        }
+
+        return NSLocalizedString("Error.Illegal.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 重试
+      static func errorNetworkTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Network.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Network.Title"
+        }
+
+        return NSLocalizedString("Error.Network.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 重试
+      static func errorServerTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Server.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Server.Title"
+        }
+
+        return NSLocalizedString("Error.Server.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 非法操作
+      static func errorIllegalMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Illegal.Message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Illegal.Message"
+        }
+
+        return NSLocalizedString("Error.Illegal.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 首页

@@ -10,7 +10,7 @@ import Foundation
 extension Router {
     
     static func web(_ provider: SWFrame.ProviderType, _ navigator: NavigatorType) {
-        let webFactory: ViewControllerFactory = { (url: URLConvertible, _, context: Any?) in
+        let webFactory: ViewControllerFactory = { (url: URLNavigator.URLConvertible, _, context: Any?) in
             guard let url = url.urlValue else { return nil }
             // (1) 原生支持
             let string = url.absoluteString

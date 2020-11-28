@@ -23,6 +23,7 @@ import UIKit
 @_exported import ObjectMapper
 @_exported import URLNavigator
 @_exported import Rswift
+@_exported import Alamofire
 @_exported import Kingfisher
 @_exported import SwifterSwift
 @_exported import SwiftEntryKit
@@ -30,6 +31,7 @@ import UIKit
 @_exported import IQKeyboardManagerSwift
 @_exported import Toast_Swift
 @_exported import Umbrella
+@_exported import SwiftSoup
 @_exported import SWFrame
 
 final class AppDependency: AppDependencyType {
@@ -60,14 +62,11 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        self.provider.siteInfo().asObservable().subscribe(onNext: { info in
+//        self.provider.captcha().asObservable().subscribe(onNext: { info in
 //            log("info = \(info)")
 //        }, onError: { error in
 //            log("error = \(error)")
 //        }).disposed(by: self.disposeBag)
-        // log("url = \(Router.login.urlString)")
-        let back = UIImage.back
-        log("")
     }
     
     // MARK: - Lifecycle

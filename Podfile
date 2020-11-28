@@ -22,6 +22,8 @@ target 'V2EX-Swift' do
   pod 'Umbrella/Core', '0.9.0'
   pod 'Parchment', '2.4.0'
   pod 'SnapKit', '5.0.1'
+  pod 'SwiftSoup', '2.3.2'
+  
   # pod 'MLeaksFinder', '1.0.0'
   # pod 'FLEX', '3.0.0'
 

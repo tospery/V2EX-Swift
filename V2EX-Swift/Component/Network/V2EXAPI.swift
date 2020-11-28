@@ -9,6 +9,8 @@ import Foundation
 
 enum V2EXAPI {
     case siteInfo
+    case signin
+    case captcha(once: String)
 }
 
 extension V2EXAPI: TargetType {
@@ -20,6 +22,8 @@ extension V2EXAPI: TargetType {
     var path: String {
         switch self {
         case .siteInfo: return "/api/site/info.json"
+        case .signin: return "/signin"
+        case .captcha: return "/_captcha"
         }
     }
 
@@ -27,7 +31,19 @@ extension V2EXAPI: TargetType {
 
     var headers: [String: String]? { nil }
 
-    var task: Task { .requestPlain }
+    var task: Task {
+        var parameters = [String: Any]()
+        switch self {
+        case let .captcha(once):
+            parameters["once"] = once
+        default:
+            return .requestPlain
+        }
+        return .requestParameters(
+            parameters: parameters,
+            encoding: URLEncoding.queryString
+        )
+    }
 
     var validationType: ValidationType { .none }
 

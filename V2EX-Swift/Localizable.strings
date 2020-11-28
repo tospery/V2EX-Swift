@@ -14,6 +14,15 @@
 "Home" = "首页";
 "Mine" = "我的";
 "Login" = "登录";
-/* 登录 */
-"Login.Expression" = "登录即表示同意";
-
+/* 错误 */
+"Error.Network.Title" = "重试";
+"Error.Server.Title" = "重试";
+"Error.Empty.Title" = "重试";
+"Error.Expired.Title" = "重试";
+"Error.Illegal.Title" = "重试";
+"Error.Network.Message" = "网络错误";
+"Error.Server.Message" = "服务异常";
+"Error.Empty.Message" = "数据为空";
+"Error.Expired.Message" = "当前账户登录已过期，请重新登录";
+"Error.Illegal.Message" = "非法操作";
+"Error.InvalidFormat" = "无效的数据格式";

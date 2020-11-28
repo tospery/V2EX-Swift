@@ -30,4 +30,27 @@ extension SWFrame.ProviderType {
         )
     }
     
+    /// V2EX登录验证：https://www.v2ex.com/_captcha?once=[once]
+    func captcha() -> Single<UIImage> {
+        networking.requestRaw(
+            MultiTarget.init(V2EXAPI.signin)
+        )
+        .mapString()
+        .flatMap { string -> Single<UIImage> in
+            guard
+                let doc = try? SwiftSoup.parse(string),
+                let element = try? doc.getElementsByAttributeValue("name", "once").first(),
+                let once = try? element.attr("value")
+            else {
+                return .error(V2EXError.invalidFormat)
+            }
+            return networking.requestRaw(
+                MultiTarget.init(
+                    V2EXAPI.captcha(once: once)
+                )
+            )
+            .mapImage()
+        }
+    }
+    
 }

@@ -10,7 +10,7 @@ import Foundation
 extension Router {
     
     static func page(_ provider: SWFrame.ProviderType, _ navigator: NavigatorType) {
-        let parameters = { (url: URLConvertible, values: [String: Any], context: Any?) -> [String: Any]? in
+        let parameters = { (url: URLNavigator.URLConvertible, values: [String: Any], context: Any?) -> [String: Any]? in
             var parameters: [String: Any] = url.queryParameters
             for (key, value) in values {
                 parameters[key] = value
