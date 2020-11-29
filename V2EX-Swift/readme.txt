@@ -10,4 +10,8 @@ weak/strong
 实时性能检测
 pdf矢量图标
 https://www.jianshu.com/p/6e195ce66c61
-            Error
+12 mini -> 360x780
+12 Pro  -> 390x844
+12 Pro Max -> 428x926
+链式动画
+self.navigationBar.transparet()只有setNeedLayout重新设置self.scrollView.frame = self.contentFrame

@@ -152,10 +152,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 5 images.
+  /// This `R.image` struct is generated, and contains static references to 9 images.
   struct image {
     /// Image `app_logo`.
     static let app_logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_logo")
+    /// Image `login_account`.
+    static let login_account = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_account")
+    /// Image `login_bg`.
+    static let login_bg = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_bg")
+    /// Image `login_captcha`.
+    static let login_captcha = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_captcha")
+    /// Image `login_password`.
+    static let login_password = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_password")
     /// Image `tabbar_home_normal`.
     static let tabbar_home_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_home_normal")
     /// Image `tabbar_home_selected`.
@@ -169,6 +177,34 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "app_logo", bundle: ..., traitCollection: ...)`
     static func app_logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.app_logo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "login_account", bundle: ..., traitCollection: ...)`
+    static func login_account(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.login_account, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "login_bg", bundle: ..., traitCollection: ...)`
+    static func login_bg(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.login_bg, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "login_captcha", bundle: ..., traitCollection: ...)`
+    static func login_captcha(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.login_captcha, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "login_password", bundle: ..., traitCollection: ...)`
+    static func login_password(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.login_password, compatibleWith: traitCollection)
     }
     #endif
 
