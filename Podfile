@@ -23,6 +23,7 @@ target 'V2EX-Swift' do
   pod 'Parchment', '2.4.0'
   pod 'SnapKit', '5.0.1'
   pod 'SwiftSoup', '2.3.2'
+  pod 'EasyAnimation', '2.2.1'
   
   # pod 'MLeaksFinder', '1.0.0'
   # pod 'FLEX', '3.0.0'
