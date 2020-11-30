@@ -15,3 +15,4 @@ https://www.jianshu.com/p/6e195ce66c61
 12 Pro Max -> 428x926
 链式动画
 self.navigationBar.transparet()只有setNeedLayout重新设置self.scrollView.frame = self.contentFrame
+Cannot map data to String

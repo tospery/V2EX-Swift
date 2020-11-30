@@ -241,10 +241,12 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 18 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 21 localization keys.
     struct localizable {
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 密码
+      static let password = Rswift.StringResource(key: "Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 当前账户登录已过期，请重新登录
       static let errorExpiredMessage = Rswift.StringResource(key: "Error.Expired.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的
@@ -257,6 +259,8 @@ struct R: Rswift.Validatable {
       static let yes = Rswift.StringResource(key: "Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 服务异常
       static let errorServerMessage = Rswift.StringResource(key: "Error.Server.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 用户名
+      static let username = Rswift.StringResource(key: "Username", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
       static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
@@ -279,6 +283,8 @@ struct R: Rswift.Validatable {
       static let errorIllegalMessage = Rswift.StringResource(key: "Error.Illegal.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首页
       static let home = Rswift.StringResource(key: "Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 验证码
+      static let captcha = Rswift.StringResource(key: "Captcha", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
       /// Value: 否
       static func no(preferredLanguages: [String]? = nil) -> String {
@@ -291,6 +297,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("No", bundle: bundle, comment: "")
+      }
+
+      /// Value: 密码
+      static func password(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Password"
+        }
+
+        return NSLocalizedString("Password", bundle: bundle, comment: "")
       }
 
       /// Value: 当前账户登录已过期，请重新登录
@@ -369,6 +388,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Server.Message", bundle: bundle, comment: "")
+      }
+
+      /// Value: 用户名
+      static func username(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Username", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Username"
+        }
+
+        return NSLocalizedString("Username", bundle: bundle, comment: "")
       }
 
       /// Value: 登录
@@ -512,6 +544,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Home", bundle: bundle, comment: "")
+      }
+
+      /// Value: 验证码
+      static func captcha(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Captcha", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Captcha"
+        }
+
+        return NSLocalizedString("Captcha", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

@@ -32,6 +32,7 @@ import UIKit
 @_exported import Toast_Swift
 @_exported import Umbrella
 @_exported import SwiftSoup
+@_exported import EasyAnimation
 @_exported import SWFrame
 
 final class AppDependency: AppDependencyType {

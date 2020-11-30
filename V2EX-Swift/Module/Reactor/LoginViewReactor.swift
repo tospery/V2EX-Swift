@@ -11,6 +11,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
+        case login
     }
 
     enum Mutation {
@@ -18,6 +19,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case setError(Error?)
         case setTitle(String?)
         case setUser(User?)
+        case setCaptchaImage(UIImage?)
     }
 
     struct State {
@@ -25,6 +27,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         var error: Error?
         var title: String?
         var user: User?
+        var captchaImage: UIImage?
         var sections = [Section].init()
     }
 
@@ -40,6 +43,13 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
+            return Observable.concat([
+                .just(.setError(nil)),
+                self.provider.captcha().asObservable().map(Mutation.setCaptchaImage)
+            ]).catchError({
+                .just(.setError($0))
+            })
+        case .login:
             return .empty()
         }
     }
@@ -58,6 +68,8 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             newState.title = title
         case let .setUser(user):
             newState.user = user
+        case let .setCaptchaImage(captchaImage):
+            newState.captchaImage = captchaImage
         }
         return newState
     }

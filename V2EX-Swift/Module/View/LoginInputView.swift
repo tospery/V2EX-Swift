@@ -11,9 +11,15 @@ class LoginInputView: UIView {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView.init()
-        imageView.image = R.image.login_account()
         imageView.sizeToFit()
         return imageView
+    }()
+    
+    lazy var textField: UITextField = {
+        let textField = UITextField.init()
+        textField.font = .normal(15)
+        textField.sizeToFit()
+        return textField
     }()
 
     override init(frame: CGRect) {
@@ -21,8 +27,13 @@ class LoginInputView: UIView {
         self.cornerRadius = 4
         self.borderWidth = 1
         self.addSubview(self.imageView)
+        self.addSubview(self.textField)
         themeService.rx
             .bind({ $0.separatorColor }, to: self.rx.borderColor)
+            .bind({ $0.backgroundColor }, to: [
+                self.imageView.rx.tintColor,
+                self.textField.rx.textColor
+            ])
             .disposed(by: self.rx.disposeBag)
     }
     
@@ -32,16 +43,20 @@ class LoginInputView: UIView {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let width = UIScreen.width - metric(50) * 2
-        let height = metric(40)
+        let height = metric(44)
         return .init(width: width, height: height)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imageView.height = self.height
+        self.imageView.height = flat(self.height - 8 * 2)
         self.imageView.width = self.imageView.height
-        self.imageView.left = 0
-        self.imageView.top = 0
+        self.imageView.left = 10
+        self.imageView.top = self.imageView.topWhenCenter
+        self.textField.height = self.height
+        self.textField.width = self.width - self.imageView.right - 10 - 8
+        self.textField.left = self.imageView.right + 8
+        self.textField.top = 0
     }
     
 }

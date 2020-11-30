@@ -15,6 +15,7 @@ class Library: SWFrame.Library {
         self.setupUmbrella()
         self.setupKeyboardManager()
         self.setupToast()
+        self.setupEasyAnimation()
     }
 
     static func setupCocoaLumberjack() {
@@ -36,6 +37,10 @@ class Library: SWFrame.Library {
     static func setupToast() {
         ToastManager.shared.position = .center
         ToastManager.shared.isQueueEnabled = true
+    }
+    
+    static func setupEasyAnimation() {
+        EasyAnimation.enable()
     }
     
 }
