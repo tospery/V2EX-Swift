@@ -16,3 +16,13 @@ https://www.jianshu.com/p/6e195ce66c61
 链式动画
 self.navigationBar.transparet()只有setNeedLayout重新设置self.scrollView.frame = self.contentFrame
 Cannot map data to String
+
+
+https://www.v2ex.com/signin
+{
+    "once":33229,
+    "next":"/",
+    "usernameFieldName":"tospery",
+    "passwordFieldName":"v2JX072142",
+    "codeFieldName":"SWLIOG"
+}
