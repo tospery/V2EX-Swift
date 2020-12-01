@@ -45,6 +45,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         view.imageView.image = R.image.login_account()?.template
         view.textField.placeholder = R.string.localizable.username()
         view.textField.setPlaceHolderTextColor(.body)
+        view.textField.text = "tospery"
         view.sizeToFit()
         return view
     }()
@@ -54,6 +55,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         view.imageView.image = R.image.login_password()?.template
         view.textField.placeholder = R.string.localizable.password()
         view.textField.setPlaceHolderTextColor(.body)
+        view.textField.text = "v2JX072142"
         view.sizeToFit()
         return view
     }()
@@ -162,6 +164,18 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         ])
         .bind(to: reactor.action)
         .disposed(by: self.disposeBag)
+        self.accountView.textField.rx.text
+            .map { Reactor.Action.username($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.passwordView.textField.rx.text
+            .map { Reactor.Action.password($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.captchaView.textField.rx.text
+            .map { Reactor.Action.captcha($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         self.loginButton.rx.tap.map { Reactor.Action.login }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -174,7 +188,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.captchaImage }
+        reactor.state.map { $0.input?.image }
             .distinctUntilChanged()
             .bind(to: self.rx.captchaImage)
             .disposed(by: self.disposeBag)

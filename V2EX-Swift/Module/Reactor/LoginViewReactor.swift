@@ -12,14 +12,20 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     enum Action {
         case load
         case login
+        case username(String?)
+        case password(String?)
+        case captcha(String?)
     }
 
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
         case setTitle(String?)
+        case setUsername(String?)
+        case setPassword(String?)
+        case setCaptcha(String?)
         case setUser(User?)
-        case setCaptchaImage(UIImage?)
+        case setInput(Input?)
     }
 
     struct State {
@@ -27,8 +33,19 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         var error: Error?
         var title: String?
         var user: User?
-        var captchaImage: UIImage?
+        var username: String?
+        var password: String?
+        var captcha: String?
+        var input: Input?
         var sections = [Section].init()
+    }
+    
+    struct Input {
+        let username: String
+        let password: String
+        let captcha: String
+        let once: String
+        let image: UIImage
     }
 
     var initialState = State()
@@ -45,12 +62,38 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case .load:
             return Observable.concat([
                 .just(.setError(nil)),
-                self.provider.captcha().asObservable().map(Mutation.setCaptchaImage)
+                self.provider.captcha().asObservable().map(Mutation.setInput)
             ]).catchError({
                 .just(.setError($0))
             })
+        case let .username(username):
+            return .just(.setUsername(username))
+        case let .password(password):
+            return .just(.setPassword(password))
+        case let .captcha(captcha):
+            return .just(.setCaptcha(captcha))
         case .login:
-            return .empty()
+            guard
+                let username = self.currentState.username,
+                let password = self.currentState.password,
+                let captcha = self.currentState.captcha,
+                let input = self.currentState.input
+            else {
+                return .empty()
+            }
+            return Observable.concat([
+                .just(.setError(nil)),
+                self.provider.login(
+                    username: username,
+                    password: password,
+                    captcha: captcha,
+                    input: input
+                )
+                .asObservable()
+                .map(Mutation.setUser)
+            ]).catchError({
+                .just(.setError($0))
+            })
         }
     }
     
@@ -68,8 +111,14 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             newState.title = title
         case let .setUser(user):
             newState.user = user
-        case let .setCaptchaImage(captchaImage):
-            newState.captchaImage = captchaImage
+        case let .setUsername(username):
+            newState.username = username
+        case let .setPassword(password):
+            newState.password = password
+        case let .setCaptcha(captcha):
+            newState.captcha = captcha
+        case let .setInput(input):
+            newState.input = input
         }
         return newState
     }
