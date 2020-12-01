@@ -10,6 +10,7 @@ import Foundation
 enum V2EXAPI {
     case siteInfo
     case signin
+    case userinfo(username: String)
     case captcha(once: String)
     case login(username: String, password: String, captcha: String, input: LoginViewReactor.Input)
 }
@@ -25,6 +26,7 @@ extension V2EXAPI: TargetType {
         case .siteInfo: return "/api/site/info.json"
         case .signin, .login: return "/signin"
         case .captcha: return "/_captcha"
+        case let .userinfo(username): return "/member/\(username)"
         }
     }
 
@@ -58,7 +60,7 @@ extension V2EXAPI: TargetType {
             parameters[input.password] = password
             parameters[input.captcha] = captcha
             parameters["once"] = input.once
-            parameters["next"] = "/"
+            parameters["next"] = "/member/tospery"
             return .requestParameters(parameters: parameters, encoding: URLEncoding.httpBody)
         default:
             return .requestPlain

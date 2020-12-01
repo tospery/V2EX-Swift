@@ -13,16 +13,15 @@ struct User: ModelType, Identifiable, Subjective, Eventable {
     }
     
     var id = ""
-    var token: String?
-    var username: String?
+    var avatar: String?
+    var signature: String?
+    
+    var username: String {
+        return self.id
+    }
     
     var isLogined: Bool {
-        if self.id.isEmpty ||
-            self.token?.isEmpty ?? true ||
-            self.username?.isEmpty ?? true {
-            return false
-        }
-        return true
+        return !self.id.isEmpty
     }
     
     init() {
@@ -33,8 +32,8 @@ struct User: ModelType, Identifiable, Subjective, Eventable {
 
     mutating func mapping(map: Map) {
         id                  <- map["id"]
-        token               <- map["token"]
-        username            <- map["username"]
+        avatar              <- map["avatar"]
+        signature           <- map["signature"]
     }
     
     static func update(_ user: User?) {

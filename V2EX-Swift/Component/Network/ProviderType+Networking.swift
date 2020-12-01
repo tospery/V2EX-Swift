@@ -107,16 +107,18 @@ extension SWFrame.ProviderType {
         )
         .mapString()
         .flatMap { string -> Single<User> in
-            log("html: \(string)")
             guard
                 let doc = try? SwiftSoup.parse(string),
-                let element = try? doc.getElementsByAttributeValue("alt", "tospery").first(),
-                let avatar = try? element.attr("src")
+                let avatar = try? doc.getElementsByAttributeValue("class", "avatar").first()?.attr("src"),
+                !avatar.isEmpty
             else {
                 return .error(V2EXError.invalidFormat)
             }
-            log("avatar = \(avatar)")
-            return .just(User.init())
+            var user = User.init()
+            user.id = username
+            user.avatar = avatar
+            user.signature = try? doc.getElementsByAttributeValue("class", "bigger").first()?.text()
+            return .just(user)
         }
     }
     
