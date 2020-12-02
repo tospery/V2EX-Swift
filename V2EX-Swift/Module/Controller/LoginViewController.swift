@@ -192,6 +192,17 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.rx.captchaImage)
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.user }
+            .filterNil()
+            .distinctUntilChanged()
+            .subscribeNext(weak: self, type(of: self).handle)
+            .disposed(by: self.disposeBag)
+    }
+    
+    func handle(_ user: User) {
+        // User.update(user)
+        user.save(ignoreId: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

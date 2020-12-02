@@ -128,8 +128,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let user = Subjection.for(User.self).asObservable().map(Mutation.setUser)
-        return .merge(mutation, user)
+        mutation
     }
     
     func transform(state: Observable<State>) -> Observable<State> {

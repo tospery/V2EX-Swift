@@ -16,6 +16,7 @@ class Library: SWFrame.Library {
         self.setupKeyboardManager()
         self.setupToast()
         self.setupEasyAnimation()
+        self.setupCache()
     }
 
     static func setupCocoaLumberjack() {
@@ -41,6 +42,10 @@ class Library: SWFrame.Library {
     
     static func setupEasyAnimation() {
         EasyAnimation.enable()
+    }
+    
+    static func setupCache() {
+
     }
     
 }
