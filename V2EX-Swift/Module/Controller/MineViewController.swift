@@ -15,8 +15,8 @@ class MineViewController: CollectionViewController, ReactorKit.View {
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
     
-    lazy var testButton: SWFrame.Button = {
-        let button = SWFrame.Button.init(type: .custom)
+    lazy var testButton: SWButton = {
+        let button = SWButton.init(type: .custom)
         button.backgroundColor = .red
         button.sizeToFit()
         button.size = .init(80)

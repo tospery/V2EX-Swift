@@ -33,7 +33,7 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: stringDefault(self.title, R.string.localizable.mine())
+            title: self.title ?? R.string.localizable.mine()
         )
     }
 

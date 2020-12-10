@@ -9,8 +9,8 @@ import UIKit
 
 class LoginViewController: ScrollViewController, ReactorKit.View {
     
-    lazy var loginButton: SWFrame.Button = {
-        let button = SWFrame.Button.init(type: .custom)
+    lazy var loginButton: SWButton = {
+        let button = SWButton.init(type: .custom)
         button.cornerRadius = 4
         button.borderWidth = 1
         button.titleLabel?.font = .normal(17)

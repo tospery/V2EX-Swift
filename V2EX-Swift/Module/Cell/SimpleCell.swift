@@ -9,15 +9,15 @@ import UIKit
 
 class SimpleCell: CollectionCell, ReactorKit.View {
 
-    lazy var titleLabel: Label = {
-        let label = Label()
+    lazy var titleLabel: SWLabel = {
+        let label = SWLabel()
         label.font = .normal(16)
         label.sizeToFit()
         return label
     }()
 
-    lazy var detailLabel: Label = {
-        let label = Label()
+    lazy var detailLabel: SWLabel = {
+        let label = SWLabel()
         label.font = .normal(14)
         label.textAlignment = .right
         label.sizeToFit()

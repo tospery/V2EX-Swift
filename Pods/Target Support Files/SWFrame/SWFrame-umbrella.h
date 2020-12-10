@@ -10,9 +10,8 @@
 #endif
 #endif
 
-#import "AttributedLabel.h"
-#import "Button.h"
-#import "Label.h"
+#import "SWButton.h"
+#import "SWLabel.h"
 #import "UILabel+Ext.h"
 
 FOUNDATION_EXPORT double SWFrameVersionNumber;
