@@ -20,7 +20,6 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
-        case setTitle(String?)
         case setUsername(String?)
         case setPassword(String?)
         case setCaptcha(String?)
@@ -31,7 +30,6 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     struct State {
         var isLoading = false
         var error: Error?
-        var title: String?
         var user: User?
         var username: String?
         var password: String?
@@ -52,9 +50,9 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        self.initialState = State(
-            title: self.title ?? R.string.localizable.login()
-        )
+//        self.initialState = State(
+//            title: self.title ?? R.string.localizable.login()
+//        )
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -107,8 +105,8 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
                 newState.isLoading = false
             }
             newState.error = error
-        case let .setTitle(title):
-            newState.title = title
+//        case let .setTitle(title):
+//            newState.title = title
         case let .setUser(user):
             newState.user = user
         case let .setUsername(username):

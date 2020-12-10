@@ -152,8 +152,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 9 images.
+  /// This `R.image` struct is generated, and contains static references to 10 images.
   struct image {
+    /// Image `app_icon`.
+    static let app_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_icon")
     /// Image `app_logo`.
     static let app_logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_logo")
     /// Image `login_account`.
@@ -172,6 +174,13 @@ struct R: Rswift.Validatable {
     static let tabbar_mine_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_mine_normal")
     /// Image `tabbar_mine_selected`.
     static let tabbar_mine_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_mine_selected")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "app_icon", bundle: ..., traitCollection: ...)`
+    static func app_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.app_icon, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "app_logo", bundle: ..., traitCollection: ...)`
@@ -241,12 +250,16 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 21 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 23 localization keys.
     struct localizable {
+      /// Value: 创意工作者们的社区
+      static let slogan = Rswift.StringResource(key: "Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 密码
       static let password = Rswift.StringResource(key: "Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 开始使用
+      static let getStarted = Rswift.StringResource(key: "Get Started", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 当前账户登录已过期，请重新登录
       static let errorExpiredMessage = Rswift.StringResource(key: "Error.Expired.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的
@@ -286,6 +299,19 @@ struct R: Rswift.Validatable {
       /// Value: 验证码
       static let captcha = Rswift.StringResource(key: "Captcha", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
+      /// Value: 创意工作者们的社区
+      static func slogan(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Slogan", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Slogan"
+        }
+
+        return NSLocalizedString("Slogan", bundle: bundle, comment: "")
+      }
+
       /// Value: 否
       static func no(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -310,6 +336,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Password", bundle: bundle, comment: "")
+      }
+
+      /// Value: 开始使用
+      static func getStarted(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Get Started", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Get Started"
+        }
+
+        return NSLocalizedString("Get Started", bundle: bundle, comment: "")
       }
 
       /// Value: 当前账户登录已过期，请重新登录

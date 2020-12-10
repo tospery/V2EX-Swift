@@ -24,6 +24,7 @@ target 'V2EX-Swift' do
   pod 'SnapKit', '5.0.1'
   pod 'SwiftSoup', '2.3.2'
   pod 'EasyAnimation', '2.2.1'
+  pod 'TTTAttributedLabel', '2.0.0'
   
   # pod 'MLeaksFinder', '1.0.0'
   # pod 'FLEX', '3.0.0'
