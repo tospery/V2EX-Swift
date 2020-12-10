@@ -18,6 +18,72 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         return label
     }()
     
+    lazy var termLabel: TTTAttributedLabel = {
+        let label = TTTAttributedLabel.init(frame: .zero)
+        let text = R.string.localizable.userTerm(
+            R.string.localizable.termsOfService(),
+            R.string.localizable.privacyAgreement()
+        )
+        let termCount = R.string.localizable.termsOfService().count
+        let privacyCount = R.string.localizable.privacyAgreement().count
+        label.setText(
+            text.styled(with: .color(.body), .font(.normal(12)))
+        )
+        label.addLink(
+            TTTAttributedLabelLink.init(
+                attributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.black,
+                    NSAttributedString.Key.underlineStyle: NSNumber.init(value: true),
+                    NSAttributedString.Key.underlineColor: UIColor.black
+                ],
+                activeAttributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.red,
+                    NSAttributedString.Key.underlineStyle: NSNumber.init(value: true),
+                    NSAttributedString.Key.underlineColor: UIColor.red
+                ],
+                inactiveAttributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.gray,
+                    NSAttributedString.Key.underlineStyle: NSNumber.init(value: true),
+                    NSAttributedString.Key.underlineColor: UIColor.gray
+                ],
+                textCheckingResult: .spellCheckingResult(
+                    range: .init(
+                        location: text.count - termCount - 1 - privacyCount,
+                        length: termCount
+                    )
+                )
+            )
+        )
+        label.addLink(
+            TTTAttributedLabelLink.init(
+                attributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.black,
+                    NSAttributedString.Key.underlineStyle: NSNumber.init(value: true),
+                    NSAttributedString.Key.underlineColor: UIColor.black
+                ],
+                activeAttributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.red,
+                    NSAttributedString.Key.underlineStyle: NSNumber.init(value: true),
+                    NSAttributedString.Key.underlineColor: UIColor.red
+                ],
+                inactiveAttributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.gray,
+                    NSAttributedString.Key.underlineStyle: NSNumber.init(value: true),
+                    NSAttributedString.Key.underlineColor: UIColor.gray
+                ],
+                textCheckingResult: .spellCheckingResult(
+                    range: .init(
+                        location: text.count - privacyCount,
+                        length: privacyCount
+                    )
+                )
+            )
+        )
+        label.sizeToFit()
+        label.height = 20
+        return label
+    }()
+    
     lazy var usernameTextField: UITextField = {
         let textField = UITextField.init()
         textField.font = .normal(16)
@@ -57,41 +123,21 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         button.titleLabel?.font = .normal(17)
         button.setTitle(R.string.localizable.getStarted(), for: .normal)
         button.sizeToFit()
-        button.height = metric(40)
+        button.height = 44
         button.cornerRadius = button.height / 2.f
         return button
     }()
     
-//
-//    lazy var accountView: LoginInputView = {
-//        let view = LoginInputView.init()
-//        view.imageView.image = R.image.login_account()?.template
-//        view.textField.placeholder = R.string.localizable.username()
-//        view.textField.setPlaceHolderTextColor(.body)
-//        view.textField.text = "tospery"
-//        view.sizeToFit()
-//        return view
-//    }()
-//
-//    lazy var passwordView: LoginInputView = {
-//        let view = LoginInputView.init()
-//        view.imageView.image = R.image.login_password()?.template
-//        view.textField.placeholder = R.string.localizable.password()
-//        view.textField.setPlaceHolderTextColor(.body)
-//        view.textField.text = "v2JX072142"
-//        view.sizeToFit()
-//        return view
-//    }()
-//
-//    lazy var captchaView: LoginInputView = {
-//        let view = LoginInputView.init()
-//        view.imageView.image = R.image.login_captcha()?.template
-//        view.textField.placeholder = R.string.localizable.captcha()
-//        view.textField.setPlaceHolderTextColor(.body)
-//        view.sizeToFit()
-//        view.width -= metric(140)
-//        return view
-//    }()
+    lazy var weixinButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.borderWidth = 1
+        button.contentEdgeInsets = .init(horizontal: metric(20), vertical: metric(20))
+        button.setImage(R.image.weixin(), for: .normal)
+        button.sizeToFit()
+        button.size = .init(metric(60))
+        button.cornerRadius = button.height / 2.f
+        return button
+    }()
     
     init(_ navigator: NavigatorType, _ reactor: LoginViewReactor) {
         defer {
@@ -107,44 +153,9 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // navbar
         self.navigationBar.transparet()
         self.scrollView.frame = self.contentFrame
-        
-//        // icon
-//        self.scrollView.addSubview(self.iconImageView)
-//        self.iconImageView.left = self.iconImageView.leftWhenCenter
-//        self.iconImageView.centerY = flat(self.scrollView.height / 2.0 * 0.35)
-//        // slogan
-//        self.scrollView.addSubview(self.sloganLabel)
-//        self.sloganLabel.left = self.sloganLabel.leftWhenCenter
-//        self.sloganLabel.top = self.iconImageView.bottom
-//        // username
-//        let margin = metric(20)
-//        let height = metric(50)
-//        self.scrollView.addSubview(self.usernameTextField)
-//        self.usernameTextField.width = self.scrollView.width - margin * 2
-//        self.usernameTextField.height = height
-//        self.usernameTextField.left = self.usernameTextField.leftWhenCenter
-        
-//        // captcha
-//        let margin = metric(20)
-//        let height = metric(50)
-//        self.scrollView.addSubview(self.captchaView)
-//        self.captchaView.width = self.scrollView.width - margin * 2
-//        self.captchaView.height = height
-//        self.captchaView.left = self.captchaView.leftWhenCenter
-//        self.captchaView.top = self.captchaView.topWhenCenter
-        
-//        // password
-//        let margin = metric(20)
-//        let height = 50.f
-//        let width = self.scrollView.width - margin * 2
-//        self.scrollView.addSubview(self.passwordTextField)
-//        self.passwordTextField.width = width
-//        self.passwordTextField.height = height
-//        self.passwordTextField.left = self.passwordTextField.leftWhenCenter
-//        self.passwordTextField.top = self.passwordTextField.topWhenCenter
-        
         // captcha
         let margin = metric(20)
         let height = 44.f
@@ -179,6 +190,14 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         self.loginButton.width = width
         self.loginButton.left = self.loginButton.leftWhenCenter
         self.loginButton.top = self.captchaView.bottom + 30
+        // weixin
+        self.scrollView.addSubview(self.weixinButton)
+        self.weixinButton.left = self.weixinButton.leftWhenCenter
+        self.weixinButton.top = flat(self.weixinButton.topWhenCenter * 1.5)
+        // term
+        self.scrollView.addSubview(self.termLabel)
+        self.termLabel.left = self.termLabel.leftWhenCenter
+        self.termLabel.bottom = self.scrollView.height - safeBottom - 4
         
         let size = self.loginButton.size
         themeService.rx
@@ -190,60 +209,19 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
             .bind({ $0.borderColor }, to: [
                 self.usernameTextField.rx.qmui_borderColor,
-                self.passwordTextField.rx.qmui_borderColor
+                self.passwordTextField.rx.qmui_borderColor,
+                self.weixinButton.rx.borderColor
             ])
             .disposed(by: self.rx.disposeBag)
-        
-//        self.scrollView.addSubview(self.backgroundImageView)
-//        self.backgroundImageView.frame = self.scrollView.bounds
-//        self.scrollView.addSubview(self.frostedView)
-//        self.frostedView.frame = self.scrollView.bounds
-//        var blurEffect = UIBlurEffect.Style.dark
-//        if #available(iOS 13.0, *) {
-//            blurEffect = .systemUltraThinMaterialDark
-//        }
-//        let vibrancyEffect = UIVibrancyEffect.init(blurEffect: UIBlurEffect.init(style: blurEffect))
-//        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
-//        vibrancyView.isUserInteractionEnabled = true
-//        vibrancyView.frame = self.frostedView.frame
-//        self.frostedView.contentView.addSubview(vibrancyView)
-//        self.scrollView.addSubview(self.accountView)
-//        self.scrollView.addSubview(self.passwordView)
-//        self.scrollView.addSubview(self.captchaView)
-//        self.scrollView.addSubview(self.captchaImageView)
-//        self.scrollView.addSubview(self.loginButton)
-//
-//        self.accountView.left = self.accountView.leftWhenCenter
-//        self.accountView.centerY = flat(self.scrollView.height / 2.0 * 0.5)
-//        self.passwordView.left = self.accountView.left
-//        self.passwordView.top = self.accountView.bottom + 20
-//        self.captchaView.left = self.accountView.left
-//        self.captchaView.top = self.passwordView.bottom + 20
-//        self.captchaImageView.width = self.accountView.width - self.captchaView.width - 2
-//        self.captchaImageView.height = self.captchaView.height
-//        self.captchaImageView.top = self.captchaView.top
-//        self.captchaImageView.left = self.captchaView.right + 2
-//        self.loginButton.width = self.accountView.width
-//        self.loginButton.height = self.accountView.height
-//        self.loginButton.left = self.accountView.left
-//        self.loginButton.top = self.captchaView.bottom + 30
-        
+
 //        self.loginButton.rx.tap
 //            .subscribeNext(weak: self, type(of: self).tapLogin)
 //            .disposed(by: self.disposeBag)
-        
-//        themeService.rx
-//            .bind({ $0.backgroundColor }, to: [
-//                self.navigationBar.rx.itemColor,
-//                self.navigationBar.rx.titleColor,
-//                self.loginButton.rx.titleColor(for: .normal),
-//                self.loginButton.rx.borderColor
-//            ])
-//            .disposed(by: self.rx.disposeBag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
 //        if self.backgroundImageView.alpha == 0 {
 //            UIView.animate(withDuration: 2) {
 //                self.backgroundImageView.alpha = 1

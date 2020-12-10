@@ -152,7 +152,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 10 images.
+  /// This `R.image` struct is generated, and contains static references to 11 images.
   struct image {
     /// Image `app_icon`.
     static let app_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_icon")
@@ -174,6 +174,8 @@ struct R: Rswift.Validatable {
     static let tabbar_mine_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_mine_normal")
     /// Image `tabbar_mine_selected`.
     static let tabbar_mine_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_mine_selected")
+    /// Image `weixin`.
+    static let weixin = Rswift.ImageResource(bundle: R.hostingBundle, name: "weixin")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "app_icon", bundle: ..., traitCollection: ...)`
@@ -245,17 +247,26 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "weixin", bundle: ..., traitCollection: ...)`
+    static func weixin(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.weixin, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 23 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 27 localization keys.
     struct localizable {
       /// Value: 创意工作者们的社区
       static let slogan = Rswift.StringResource(key: "Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 和
+      static let and = Rswift.StringResource(key: "And", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 密码
       static let password = Rswift.StringResource(key: "Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 开始使用
@@ -272,10 +283,14 @@ struct R: Rswift.Validatable {
       static let yes = Rswift.StringResource(key: "Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 服务异常
       static let errorServerMessage = Rswift.StringResource(key: "Error.Server.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 服务条款
+      static let termsOfService = Rswift.StringResource(key: "Terms of service", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 用户名
       static let username = Rswift.StringResource(key: "Username", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
       static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 登录即表示您已阅读并同意%@和%@
+      static let userTerm = Rswift.StringResource(key: "User Term", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
       static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
@@ -292,6 +307,8 @@ struct R: Rswift.Validatable {
       static let errorNetworkTitle = Rswift.StringResource(key: "Error.Network.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 重试
       static let errorServerTitle = Rswift.StringResource(key: "Error.Server.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 隐私政策
+      static let privacyAgreement = Rswift.StringResource(key: "Privacy agreement", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 非法操作
       static let errorIllegalMessage = Rswift.StringResource(key: "Error.Illegal.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首页
@@ -323,6 +340,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("No", bundle: bundle, comment: "")
+      }
+
+      /// Value: 和
+      static func and(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("And", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "And"
+        }
+
+        return NSLocalizedString("And", bundle: bundle, comment: "")
       }
 
       /// Value: 密码
@@ -429,6 +459,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Error.Server.Message", bundle: bundle, comment: "")
       }
 
+      /// Value: 服务条款
+      static func termsOfService(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Terms of service", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Terms of service"
+        }
+
+        return NSLocalizedString("Terms of service", bundle: bundle, comment: "")
+      }
+
       /// Value: 用户名
       static func username(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -453,6 +496,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Login", bundle: bundle, comment: "")
+      }
+
+      /// Value: 登录即表示您已阅读并同意%@和%@
+      static func userTerm(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("User Term", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User Term"
+        }
+
+        let format = NSLocalizedString("User Term", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
       }
 
       /// Value: 确定
@@ -557,6 +615,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Server.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 隐私政策
+      static func privacyAgreement(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Privacy agreement", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Privacy agreement"
+        }
+
+        return NSLocalizedString("Privacy agreement", bundle: bundle, comment: "")
       }
 
       /// Value: 非法操作

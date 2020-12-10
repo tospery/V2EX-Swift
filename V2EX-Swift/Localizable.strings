@@ -9,6 +9,7 @@
 /* 单词 */
 "Yes" = "是";
 "No" = "否";
+"And" = "和";
 "OK" = "确定";
 "Sure" = "确定";
 "Home" = "首页";
@@ -17,8 +18,13 @@
 "Username" = "用户名";
 "Password" = "密码";
 "Captcha" = "验证码";
-"Get Started" = "开始使用";
 "Slogan" = "创意工作者们的社区";
+/* 句子 */
+"Get Started" = "开始使用";
+"Privacy agreement" = "隐私政策";
+"Terms of service" = "服务条款";
+/* 格式 */
+"User Term" = "登录即表示您已阅读并同意%@和%@";
 /* 错误 */
 "Error.Network.Title" = "重试";
 "Error.Server.Title" = "重试";

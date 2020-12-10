@@ -33,6 +33,7 @@ import UIKit
 @_exported import Umbrella
 @_exported import SwiftSoup
 @_exported import EasyAnimation
+@_exported import TTTAttributedLabel
 @_exported import SWFrame
 
 final class AppDependency: AppDependencyType {
