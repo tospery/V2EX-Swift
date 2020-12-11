@@ -15,6 +15,15 @@ enum Router: String {
     case login
     case test
     
+    enum Web: String {
+        case agreement      = "/about"
+        case privacy        = "/mission"
+        
+        var urlString: String {
+            UIApplication.shared.baseWebUrl + self.rawValue
+        }
+    }
+    
     var urlString: String {
         "\(UIApplication.shared.scheme)://\(self.rawValue)"
     }

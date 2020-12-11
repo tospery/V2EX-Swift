@@ -86,6 +86,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             }
             return Observable.concat([
                 .just(.setError(nil)),
+                .just(.setLoading(true)),
                 self.provider.login(
                     username: username,
                     password: password,
@@ -93,9 +94,13 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
                     input: input
                 )
                 .asObservable()
-                .map(Mutation.setUser)
+                .map(Mutation.setUser),
+                .just(.setLoading(false))
             ]).catchError({
-                .just(.setError($0))
+                Observable.concat([
+                    .just(.setLoading(false)),
+                    .just(.setError($0))
+                ])
             })
         }
     }

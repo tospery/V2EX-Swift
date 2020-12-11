@@ -65,6 +65,12 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+//        let languages = "Java,Swift,Objective-C"
+//        let one = "Swift"
+//        let range = languages.range(of: one)
+//        let nsRange = "".nsRange(from: range!)
+//        print(nsRange) // {5, 5}
+        
     }
     
     // MARK: - Lifecycle

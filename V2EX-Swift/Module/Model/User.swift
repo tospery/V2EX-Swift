@@ -43,17 +43,20 @@ struct User: ModelType, Identifiable, Subjective, Eventable {
                    let newJSONString = new.toJSONString(),
                    oldJSONString != newJSONString {
                     // 更新
+                    log("用户更新: \(new)")
                     new.save(ignoreId: true)
                     Subjection.for(Self.self).accept(new)
                 }
             } else {
                 // 退出
+                log("用户退出: \(old)")
                 Self.eraseObject()
                 Subjection.for(Self.self).accept(nil)
             }
         } else {
             if let new = user {
                 // 登录
+                log("用户登录: \(new)")
                 new.save(ignoreId: true)
                 Subjection.for(Self.self).accept(new)
             }

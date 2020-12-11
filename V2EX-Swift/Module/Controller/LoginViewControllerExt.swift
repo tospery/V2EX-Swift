@@ -19,26 +19,22 @@ extension LoginViewController {
         ])
         .bind(to: reactor.action)
         .disposed(by: self.disposeBag)
-//        self.accountView.textField.rx.text
-//            .map { Reactor.Action.username($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-//        self.passwordView.textField.rx.text
-//            .map { Reactor.Action.password($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-//        self.captchaView.textField.rx.text
-//            .map { Reactor.Action.captcha($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-//        self.loginButton.rx.tap.map { Reactor.Action.login }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
+        self.usernameTextField.rx.text
+            .map { Reactor.Action.username($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.passwordTextField.rx.text
+            .map { Reactor.Action.password($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.captchaView.textField.rx.text
+            .map { Reactor.Action.captcha($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.loginButton.rx.tap.map { Reactor.Action.login }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // state
-//        reactor.state.map { $0.title }
-//            .distinctUntilChanged()
-//            .bind(to: self.navigationBar.titleLabel.rx.text)
-//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
@@ -51,11 +47,25 @@ extension LoginViewController {
             .distinctUntilChanged()
             .bind(to: self.rx.captchaing)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.user }
-//            .filterNil()
-//            .distinctUntilChanged()
-//            .subscribeNext(weak: self, type(of: self).handle)
-//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.user }
+            .distinctUntilChanged()
+            .skip(1)
+            .filterNil()
+            .subscribeNext(weak: self, type(of: self).handle)
+            .disposed(by: self.disposeBag)
+        Observable.combineLatest(
+            reactor.state.map { $0.username }.distinctUntilChanged(),
+            reactor.state.map { $0.password }.distinctUntilChanged(),
+            reactor.state.map { $0.captcha }.distinctUntilChanged()
+        )
+        .map { $0?.isNotEmpty ?? false && $1?.isNotEmpty ?? false && $2?.isNotEmpty ?? false }
+        .distinctUntilChanged()
+        .bind(to: self.loginButton.rx.isEnabled).disposed(by: self.disposeBag)
+    }
+    
+    func handle(user: User) {
+        User.update(user)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -89,6 +89,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         let textField = UITextField.init()
         textField.font = .normal(16)
         textField.placeholder = R.string.localizable.username()
+        textField.text = "tospery"
         textField.qmui_borderPosition = .bottom
         textField.qmui_borderWidth = 1
         textField.sizeToFit()
@@ -97,7 +98,9 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     lazy var passwordTextField: UITextField = {
         let textField = UITextField.init()
+        textField.isSecureTextEntry = true
         textField.font = .normal(16)
+        textField.text = "v2JX072142"
         textField.placeholder = R.string.localizable.password()
         textField.qmui_borderPosition = .bottom
         textField.qmui_borderWidth = 1
@@ -120,7 +123,6 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     lazy var loginButton: UIButton = {
         let button = UIButton.init(type: .custom)
-        button.isEnabled = false
         button.titleLabel?.font = .normal(17)
         button.setTitle(R.string.localizable.getStarted(), for: .normal)
         button.sizeToFit()
@@ -173,23 +175,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
                 self.weixinButton.rx.borderColor
             ])
             .disposed(by: self.rx.disposeBag)
-        
-        // self.captchaView.imageView.rx.tapGesture().asObservable().subscribeNext(weak: self, CompatibleType)
-        
-//        self.captchaView.imageView.rx.tapGesture()
-//                    .subscribeNext(weak: self, type(of: self).tapCaptcha)
-//                    .disposed(by: self.disposeBag)
     }
-    
-    func tapCaptcha(event: TapControlEvent.Element) {
-        log("event: \(event)")
-    }
-    
-//    func handle(_ user: User) {
-//        // User.update(user)
-//        user.save(ignoreId: true)
-//        self.dismiss(animated: true, completion: nil)
-//    }
     
     func setupView() {
         // captcha
@@ -240,6 +226,15 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 
 extension LoginViewController: TTTAttributedLabelDelegate {
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith result: NSTextCheckingResult!) {
-        // self.navigator.push(Webpage.agreement.urlString)
+        guard let text = label.text as? String else { return }
+        let string = (text as NSString).substring(with: result.range)
+        switch string {
+        case R.string.localizable.termsOfService():
+            self.navigator.push(Router.Web.agreement.urlString)
+        case R.string.localizable.privacyAgreement():
+            self.navigator.push(Router.Web.privacy.urlString)
+        default:
+            break
+        }
     }
 }
