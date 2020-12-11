@@ -38,6 +38,7 @@
 		793B50B425718F290081C55E /* StorableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B325718F290081C55E /* StorableExt.swift */; };
 		793B50B7257195AB0081C55E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B6257195AB0081C55E /* Theme.swift */; };
 		796A6F3925725D6D006E1B95 /* Signin.html in Resources */ = {isa = PBXBuildFile; fileRef = 796A6F3825725D6D006E1B95 /* Signin.html */; };
+		798FD61E2583284D003248B3 /* LoginViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */; };
 		79B05EC82571AD02001339B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B05EC72571AD02001339B0 /* Localizable.strings */; };
 		79B05ECF2571AD87001339B0 /* OCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B05ECE2571AD87001339B0 /* OCHelper.m */; };
 		79B05EFF2571B188001339B0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B05EFE2571B188001339B0 /* R.generated.swift */; };
@@ -98,6 +99,7 @@
 		793B50B325718F290081C55E /* StorableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableExt.swift; sourceTree = "<group>"; };
 		793B50B6257195AB0081C55E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		796A6F3825725D6D006E1B95 /* Signin.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin.html; sourceTree = "<group>"; };
+		798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerExt.swift; sourceTree = "<group>"; };
 		79B05EBD2571AC1B001339B0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		79B05EC72571AD02001339B0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		79B05ECA2571AD3A001339B0 /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				79B05F522571B9DE001339B0 /* MineViewController.swift */,
 				79B05F582571BA64001339B0 /* TabBarController.swift */,
 				7907B6BB25724E5100EF94F0 /* LoginViewController.swift */,
+				798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				7907B6AC25724A2D00EF94F0 /* V2EXAPI.swift in Sources */,
 				79B05F5F2571BBB3001339B0 /* Runtime.swift in Sources */,
 				79B05F622571BBBE001339B0 /* Router.swift in Sources */,
+				798FD61E2583284D003248B3 /* LoginViewControllerExt.swift in Sources */,
 				7939EEAF257325110077164C /* LoginInputView.swift in Sources */,
 				7907B6A82572496300EF94F0 /* SiteInfo.swift in Sources */,
 				79B05F6B2571BC87001339B0 /* UIApplicationExt.swift in Sources */,

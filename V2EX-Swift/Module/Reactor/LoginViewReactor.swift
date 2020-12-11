@@ -19,6 +19,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
+        case setCaptchaing(Bool)
         case setError(Error?)
         case setUsername(String?)
         case setPassword(String?)
@@ -29,6 +30,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     struct State {
         var isLoading = false
+        var isCaptchaing = false
         var error: Error?
         var user: User?
         var username: String?
@@ -50,9 +52,6 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-//        self.initialState = State(
-//            title: self.title ?? R.string.localizable.login()
-//        )
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -60,9 +59,15 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case .load:
             return Observable.concat([
                 .just(.setError(nil)),
-                self.provider.captcha().asObservable().map(Mutation.setInput)
+                .just(.setInput(nil)),
+                .just(.setCaptchaing(true)),
+                self.provider.captcha().asObservable().map(Mutation.setInput),
+                .just(.setCaptchaing(false))
             ]).catchError({
-                .just(.setError($0))
+                Observable.concat([
+                    .just(.setCaptchaing(false)),
+                    .just(.setError($0))
+                ])
             })
         case let .username(username):
             return .just(.setUsername(username))
@@ -100,13 +105,10 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
+        case let .setCaptchaing(isCaptchaing):
+            newState.isCaptchaing = isCaptchaing
         case let .setError(error):
-            if error != nil && state.isLoading {
-                newState.isLoading = false
-            }
             newState.error = error
-//        case let .setTitle(title):
-//            newState.title = title
         case let .setUser(user):
             newState.user = user
         case let .setUsername(username):

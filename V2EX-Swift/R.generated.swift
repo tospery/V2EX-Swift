@@ -152,12 +152,16 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 11 images.
+  /// This `R.image` struct is generated, and contains static references to 13 images.
   struct image {
     /// Image `app_icon`.
     static let app_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_icon")
     /// Image `app_logo`.
     static let app_logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_logo")
+    /// Image `captcha_failed`.
+    static let captcha_failed = Rswift.ImageResource(bundle: R.hostingBundle, name: "captcha_failed")
+    /// Image `captcha_loading`.
+    static let captcha_loading = Rswift.ImageResource(bundle: R.hostingBundle, name: "captcha_loading")
     /// Image `login_account`.
     static let login_account = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_account")
     /// Image `login_bg`.
@@ -188,6 +192,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "app_logo", bundle: ..., traitCollection: ...)`
     static func app_logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.app_logo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "captcha_failed", bundle: ..., traitCollection: ...)`
+    static func captcha_failed(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.captcha_failed, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "captcha_loading", bundle: ..., traitCollection: ...)`
+    static func captcha_loading(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.captcha_loading, compatibleWith: traitCollection)
     }
     #endif
 

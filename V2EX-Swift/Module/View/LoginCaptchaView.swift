@@ -21,7 +21,7 @@ class LoginCaptchaView: UIView {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView.init()
-        imageView.backgroundColor = .red
+        imageView.image = R.image.captcha_loading()
         imageView.sizeToFit()
         return imageView
     }()

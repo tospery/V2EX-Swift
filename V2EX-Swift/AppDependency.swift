@@ -34,6 +34,7 @@ import UIKit
 @_exported import SwiftSoup
 @_exported import EasyAnimation
 @_exported import TTTAttributedLabel
+@_exported import RxGesture
 @_exported import SWFrame
 
 final class AppDependency: AppDependencyType {

@@ -20,6 +20,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     lazy var termLabel: TTTAttributedLabel = {
         let label = TTTAttributedLabel.init(frame: .zero)
+        label.delegate = self
         let text = R.string.localizable.userTerm(
             R.string.localizable.termsOfService(),
             R.string.localizable.privacyAgreement()
@@ -144,7 +145,6 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             self.reactor = reactor
         }
         super.init(navigator, reactor)
-        // self.hidesNavBottomLine = boolMember(reactor.parameters, Parameter.hideNavLine, true)
     }
 
     required init?(coder: NSCoder) {
@@ -156,6 +156,42 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         // navbar
         self.navigationBar.transparet()
         self.scrollView.frame = self.contentFrame
+        // view
+        self.setupView()
+        // theme
+        let size = self.loginButton.size
+        themeService.rx
+            .bind({ $0.titleColor }, to: self.sloganLabel.rx.textColor)
+            .bind({ $0.primaryColor.image(size: size) },
+                  to: self.loginButton.rx.backgroundImage(for: .normal))
+            .bind({ $0.primaryColor.withAlphaComponent(0.5).image(size: size) },
+                  to: self.loginButton.rx.backgroundImage(for: .disabled))
+            .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
+            .bind({ $0.borderColor }, to: [
+                self.usernameTextField.rx.qmui_borderColor,
+                self.passwordTextField.rx.qmui_borderColor,
+                self.weixinButton.rx.borderColor
+            ])
+            .disposed(by: self.rx.disposeBag)
+        
+        // self.captchaView.imageView.rx.tapGesture().asObservable().subscribeNext(weak: self, CompatibleType)
+        
+//        self.captchaView.imageView.rx.tapGesture()
+//                    .subscribeNext(weak: self, type(of: self).tapCaptcha)
+//                    .disposed(by: self.disposeBag)
+    }
+    
+    func tapCaptcha(event: TapControlEvent.Element) {
+        log("event: \(event)")
+    }
+    
+//    func handle(_ user: User) {
+//        // User.update(user)
+//        user.save(ignoreId: true)
+//        self.dismiss(animated: true, completion: nil)
+//    }
+    
+    func setupView() {
         // captcha
         let margin = metric(20)
         let height = 44.f
@@ -198,107 +234,12 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         self.scrollView.addSubview(self.termLabel)
         self.termLabel.left = self.termLabel.leftWhenCenter
         self.termLabel.bottom = self.scrollView.height - safeBottom - 4
-        
-        let size = self.loginButton.size
-        themeService.rx
-            .bind({ $0.titleColor }, to: self.sloganLabel.rx.textColor)
-            .bind({ $0.primaryColor.image(size: size) },
-                  to: self.loginButton.rx.backgroundImage(for: .normal))
-            .bind({ $0.primaryColor.withAlphaComponent(0.5).image(size: size) },
-                  to: self.loginButton.rx.backgroundImage(for: .disabled))
-            .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
-            .bind({ $0.borderColor }, to: [
-                self.usernameTextField.rx.qmui_borderColor,
-                self.passwordTextField.rx.qmui_borderColor,
-                self.weixinButton.rx.borderColor
-            ])
-            .disposed(by: self.rx.disposeBag)
+    }
 
-//        self.loginButton.rx.tap
-//            .subscribeNext(weak: self, type(of: self).tapLogin)
-//            .disposed(by: self.disposeBag)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-//        if self.backgroundImageView.alpha == 0 {
-//            UIView.animate(withDuration: 2) {
-//                self.backgroundImageView.alpha = 1
-//            }
-//            UIView.animate(withDuration: 20) {
-//                self.backgroundImageView.frame = .init(
-//                    x: -1 * (1000 - UIScreen.width) / 2,
-//                    y: 0,
-//                    width: UIScreen.height + 500,
-//                    height: UIScreen.height + 500
-//                )
-//            }
-//        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
-    func bind(reactor: LoginViewReactor) {
-        super.bind(reactor: reactor)
-        // action
-        Observable.merge([
-            self.rx.viewDidLoad.map { Reactor.Action.load },
-            self.rx.emptyDataSet.map { Reactor.Action.load }
-        ])
-        .bind(to: reactor.action)
-        .disposed(by: self.disposeBag)
-//        self.accountView.textField.rx.text
-//            .map { Reactor.Action.username($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-//        self.passwordView.textField.rx.text
-//            .map { Reactor.Action.password($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-//        self.captchaView.textField.rx.text
-//            .map { Reactor.Action.captcha($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-//        self.loginButton.rx.tap.map { Reactor.Action.login }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-        // state
-//        reactor.state.map { $0.title }
-//            .distinctUntilChanged()
-//            .bind(to: self.navigationBar.titleLabel.rx.text)
-//            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.isLoading }
-            .distinctUntilChanged()
-            .bind(to: self.rx.loading())
-            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.input?.image }
-//            .distinctUntilChanged()
-//            .bind(to: self.rx.captchaImage)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.user }
-//            .filterNil()
-//            .distinctUntilChanged()
-//            .subscribeNext(weak: self, type(of: self).handle)
-//            .disposed(by: self.disposeBag)
-    }
-    
-//    func handle(_ user: User) {
-//        // User.update(user)
-//        user.save(ignoreId: true)
-//        self.dismiss(animated: true, completion: nil)
-//    }
-    
 }
 
-extension Reactive where Base: LoginViewController {
-
-//    var captchaImage: Binder<UIImage?> {
-//        return Binder(self.base) { viewController, image in
-//            viewController.captchaImageView.image = image
-//        }
-//    }
-
+extension LoginViewController: TTTAttributedLabelDelegate {
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith result: NSTextCheckingResult!) {
+        // self.navigator.push(Webpage.agreement.urlString)
+    }
 }
