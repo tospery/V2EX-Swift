@@ -122,7 +122,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 7 files.
+  /// This `R.file` struct is generated, and contains static references to 9 files.
   struct file {
     /// Resource file `NodesAll.json`.
     static let nodesAllJson = Rswift.FileResource(bundle: R.hostingBundle, name: "NodesAll", pathExtension: "json")
@@ -130,6 +130,8 @@ struct R: Rswift.Validatable {
     static let signinHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin", pathExtension: "html")
     /// Resource file `Signin_failure_captcha.html`.
     static let signin_failure_captchaHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin_failure_captcha", pathExtension: "html")
+    /// Resource file `Signin_success.html`.
+    static let signin_successHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin_success", pathExtension: "html")
     /// Resource file `SiteInfo.json`.
     static let siteInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteInfo", pathExtension: "json")
     /// Resource file `SiteStats.json`.
@@ -138,6 +140,8 @@ struct R: Rswift.Validatable {
     static let topicsHotJson = Rswift.FileResource(bundle: R.hostingBundle, name: "TopicsHot", pathExtension: "json")
     /// Resource file `TopicsLatest.json`.
     static let topicsLatestJson = Rswift.FileResource(bundle: R.hostingBundle, name: "TopicsLatest", pathExtension: "json")
+    /// Resource file `UserInfo.json`.
+    static let userInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "UserInfo", pathExtension: "json")
 
     /// `bundle.url(forResource: "NodesAll", withExtension: "json")`
     static func nodesAllJson(_: Void = ()) -> Foundation.URL? {
@@ -154,6 +158,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Signin_failure_captcha", withExtension: "html")`
     static func signin_failure_captchaHtml(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.signin_failure_captchaHtml
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Signin_success", withExtension: "html")`
+    static func signin_successHtml(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.signin_successHtml
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -178,6 +188,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "TopicsLatest", withExtension: "json")`
     static func topicsLatestJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.topicsLatestJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "UserInfo", withExtension: "json")`
+    static func userInfoJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.userInfoJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 

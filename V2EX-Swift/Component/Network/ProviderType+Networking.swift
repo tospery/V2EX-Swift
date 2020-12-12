@@ -89,6 +89,7 @@ extension SWFrame.ProviderType {
         }
     }
     
+    /// V2EX用户登录：https://www.v2ex.com/signin
     func login(
         username: String,
         password: String,
@@ -116,11 +117,20 @@ extension SWFrame.ProviderType {
             }
             if let avatar = try? doc.getElementsByAttributeValue("class", "avatar").first()?.attr("src"),
                !avatar.isEmpty {
-                var user = User.init()
-                return .just(user)
+                return self.userinfo(username: username)
             }
             return .error(V2EXError.loginFailure(nil))
         }
     }
     
+    /// V2EX用户信息：https://www.v2ex.com/api/members/show.json?username=tospery
+    func userinfo(username: String) -> Single<User> {
+        networking.requestObject(
+            MultiTarget.init(
+                V2EXAPI.userinfo(username: username)
+            ),
+            type: User.self
+        )
+    }
+
 }

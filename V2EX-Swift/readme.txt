@@ -3,6 +3,10 @@ https://www.v2ex.com/api/site/info.json
 https://www.v2ex.com/api/nodes/all.json
 https://www.v2ex.com/_captcha?once=80363
 
+https://www.v2ex.com/api/members/show.json?id=520992
+https://www.v2ex.com/api/members/show.json?username=tospery
+
+
 去掉警告
 项目重命名规则
 Router

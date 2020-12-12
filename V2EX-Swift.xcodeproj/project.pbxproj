@@ -38,6 +38,8 @@
 		793B50B425718F290081C55E /* StorableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B325718F290081C55E /* StorableExt.swift */; };
 		793B50B7257195AB0081C55E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B6257195AB0081C55E /* Theme.swift */; };
 		796A6F3925725D6D006E1B95 /* Signin.html in Resources */ = {isa = PBXBuildFile; fileRef = 796A6F3825725D6D006E1B95 /* Signin.html */; };
+		797A472925847BED00F04954 /* Signin_success.html in Resources */ = {isa = PBXBuildFile; fileRef = 797A472825847BED00F04954 /* Signin_success.html */; };
+		797A472C25847D9E00F04954 /* UserInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 797A472B25847D9E00F04954 /* UserInfo.json */; };
 		798FD61E2583284D003248B3 /* LoginViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */; };
 		798FD68B2583FDC5003248B3 /* NodesAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD68A2583FDC5003248B3 /* NodesAll.json */; };
 		798FD68E2583FE46003248B3 /* TopicsLatest.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD68D2583FE46003248B3 /* TopicsLatest.json */; };
@@ -103,6 +105,8 @@
 		793B50B325718F290081C55E /* StorableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableExt.swift; sourceTree = "<group>"; };
 		793B50B6257195AB0081C55E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		796A6F3825725D6D006E1B95 /* Signin.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin.html; sourceTree = "<group>"; };
+		797A472825847BED00F04954 /* Signin_success.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin_success.html; sourceTree = "<group>"; };
+		797A472B25847D9E00F04954 /* UserInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserInfo.json; sourceTree = "<group>"; };
 		798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerExt.swift; sourceTree = "<group>"; };
 		798FD68A2583FDC5003248B3 /* NodesAll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NodesAll.json; sourceTree = "<group>"; };
 		798FD68D2583FE46003248B3 /* TopicsLatest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TopicsLatest.json; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				798FD68D2583FE46003248B3 /* TopicsLatest.json */,
 				798FD6902583FED6003248B3 /* TopicsHot.json */,
 				798FD69325846F51003248B3 /* Signin_failure_captcha.html */,
+				797A472825847BED00F04954 /* Signin_success.html */,
+				797A472B25847D9E00F04954 /* UserInfo.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -463,7 +469,9 @@
 				796A6F3925725D6D006E1B95 /* Signin.html in Resources */,
 				79296ED6257184990002FF68 /* LaunchScreen.storyboard in Resources */,
 				798FD68B2583FDC5003248B3 /* NodesAll.json in Resources */,
+				797A472925847BED00F04954 /* Signin_success.html in Resources */,
 				79B05EC82571AD02001339B0 /* Localizable.strings in Resources */,
+				797A472C25847D9E00F04954 /* UserInfo.json in Resources */,
 				79296ED3257184990002FF68 /* Assets.xcassets in Resources */,
 				7907B69F2572491100EF94F0 /* SiteStats.json in Resources */,
 				7907B6A42572492200EF94F0 /* SiteInfo.json in Resources */,

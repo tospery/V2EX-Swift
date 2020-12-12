@@ -18,6 +18,14 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         return label
     }()
     
+    lazy var errorLabel: UILabel = {
+        let label = UILabel.init()
+        label.font = .normal(10)
+        label.sizeToFit()
+        label.height = label.font.lineHeight
+        return label
+    }()
+    
     lazy var termLabel: TTTAttributedLabel = {
         let label = TTTAttributedLabel.init(frame: .zero)
         label.delegate = self
@@ -164,6 +172,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         let size = self.loginButton.size
         themeService.rx
             .bind({ $0.titleColor }, to: self.sloganLabel.rx.textColor)
+            .bind({ $0.primaryColor }, to: self.errorLabel.rx.textColor)
             .bind({ $0.primaryColor.image(size: size) },
                   to: self.loginButton.rx.backgroundImage(for: .normal))
             .bind({ $0.primaryColor.withAlphaComponent(0.5).image(size: size) },
@@ -211,7 +220,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         self.scrollView.addSubview(self.loginButton)
         self.loginButton.width = width
         self.loginButton.left = self.loginButton.leftWhenCenter
-        self.loginButton.top = self.captchaView.bottom + 30
+        self.loginButton.top = self.captchaView.bottom + 40
         // weixin
         self.scrollView.addSubview(self.weixinButton)
         self.weixinButton.left = self.weixinButton.leftWhenCenter
@@ -220,6 +229,11 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         self.scrollView.addSubview(self.termLabel)
         self.termLabel.left = self.termLabel.leftWhenCenter
         self.termLabel.bottom = self.scrollView.height - safeBottom - 4
+        // error
+        self.scrollView.addSubview(self.errorLabel)
+        self.errorLabel.width = width
+        self.errorLabel.left = self.errorLabel.leftWhenCenter
+        self.errorLabel.top = self.captchaView.bottom + 8
     }
 
 }

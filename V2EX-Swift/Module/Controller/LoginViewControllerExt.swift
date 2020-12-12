@@ -47,6 +47,10 @@ extension LoginViewController {
             .distinctUntilChanged()
             .bind(to: self.rx.captchaing)
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.error }
+            .distinctUntilChanged({ $0?.asAPPError == $1?.asAPPError })
+            .bind(to: self.rx.error)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.user }
             .distinctUntilChanged()
             .skip(1)
@@ -72,6 +76,13 @@ extension LoginViewController {
 
 extension Reactive where Base: LoginViewController {
 
+    var error: Binder<Error?> {
+        return Binder(self.base) { viewController, error in
+            viewController.error = error
+            viewController.errorLabel.text = error?.localizedDescription
+        }
+    }
+    
     var captchaing: Binder<Bool> {
         return Binder(self.base) { viewController, isCaptchaing in
             if isCaptchaing {

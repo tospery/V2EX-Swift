@@ -26,7 +26,7 @@ extension V2EXAPI: TargetType {
         case .siteInfo: return "/api/site/info.json"
         case .signin, .login: return "/signin"
         case .captcha: return "/_captcha"
-        case let .userinfo(username): return "/member/\(username)"
+        case .userinfo: return "/api/members/show.json"
         }
     }
 
@@ -62,6 +62,8 @@ extension V2EXAPI: TargetType {
             parameters["once"] = input.once
             parameters["next"] = "/member/tospery"
             return .requestParameters(parameters: parameters, encoding: URLEncoding.httpBody)
+        case let .userinfo(username):
+            parameters["username"] = username
         default:
             return .requestPlain
         }
