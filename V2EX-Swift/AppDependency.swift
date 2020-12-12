@@ -65,12 +65,11 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        let languages = "Java,Swift,Objective-C"
-//        let one = "Swift"
-//        let range = languages.range(of: one)
-//        let nsRange = "".nsRange(from: range!)
-//        print(nsRange) // {5, 5}
-        
+//        self.provider.hot().subscribe(onSuccess: { nodes in
+//            log("a")
+//        }, onError: { error in
+//            log("b")
+//        }).disposed(by: self.disposeBag)
     }
     
     // MARK: - Lifecycle
@@ -78,10 +77,19 @@ final class AppDependency: AppDependencyType {
         _ application: UIApplication,
         entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) {
+        // 初始化
         Runtime.work()
         Library.setup()
         Appearance.config()
         Router.initialize(self.provider, self.navigator)
+        // 基础数据
+        if Node.cachedArray() == nil,
+           let path = V2EXAPI.hot.samplePath,
+            let string = try? String.init(contentsOf: path),
+            let nodes = [Topic].init(JSONString: string).map({ $0.map { $0.node } }),
+            nodes.count != 0 {
+            Node.storeArray(nodes)
+        }
     }
 
     func application(

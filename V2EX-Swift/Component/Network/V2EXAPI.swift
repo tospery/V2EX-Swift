@@ -13,6 +13,7 @@ enum V2EXAPI {
     case userinfo(username: String)
     case captcha(once: String)
     case login(username: String, password: String, captcha: String, input: LoginViewReactor.Input)
+    case hot
 }
 
 extension V2EXAPI: TargetType {
@@ -27,6 +28,7 @@ extension V2EXAPI: TargetType {
         case .signin, .login: return "/signin"
         case .captcha: return "/_captcha"
         case .userinfo: return "/api/members/show.json"
+        case .hot: return "/api/topics/hot.json"
         }
     }
 
@@ -75,6 +77,18 @@ extension V2EXAPI: TargetType {
 
     var validationType: ValidationType { .none }
 
-    var sampleData: Data { Data.init() }
+    var sampleData: Data {
+//        var path = self.path.replacingOccurrences(of: "/", with: "-")
+//        let index = path.index(after: path.startIndex)
+//        path = String(path[index...])
+//        return Data()
+        var name = self.path.replacingOccurrences(of: "/", with: "-")
+        name = String.init(name[name.index(after: name.startIndex)...])
+        if let url = Bundle.main.url(forResource: name, withExtension: "json"),
+            let data = try? Data(contentsOf: url) {
+            return data
+        }
+        return .init()
+    }
 
 }

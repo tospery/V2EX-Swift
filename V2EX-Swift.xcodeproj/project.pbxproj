@@ -38,12 +38,14 @@
 		793B50B425718F290081C55E /* StorableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B325718F290081C55E /* StorableExt.swift */; };
 		793B50B7257195AB0081C55E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B6257195AB0081C55E /* Theme.swift */; };
 		796A6F3925725D6D006E1B95 /* Signin.html in Resources */ = {isa = PBXBuildFile; fileRef = 796A6F3825725D6D006E1B95 /* Signin.html */; };
-		797A472925847BED00F04954 /* Signin_success.html in Resources */ = {isa = PBXBuildFile; fileRef = 797A472825847BED00F04954 /* Signin_success.html */; };
+		797A472925847BED00F04954 /* signin-success.html in Resources */ = {isa = PBXBuildFile; fileRef = 797A472825847BED00F04954 /* signin-success.html */; };
 		797A472C25847D9E00F04954 /* UserInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 797A472B25847D9E00F04954 /* UserInfo.json */; };
+		797A472F258482E700F04954 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797A472E258482E700F04954 /* Node.swift */; };
+		797A4732258484C500F04954 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797A4731258484C500F04954 /* Topic.swift */; };
 		798FD61E2583284D003248B3 /* LoginViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */; };
 		798FD68B2583FDC5003248B3 /* NodesAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD68A2583FDC5003248B3 /* NodesAll.json */; };
 		798FD68E2583FE46003248B3 /* TopicsLatest.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD68D2583FE46003248B3 /* TopicsLatest.json */; };
-		798FD6912583FED6003248B3 /* TopicsHot.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD6902583FED6003248B3 /* TopicsHot.json */; };
+		798FD6912583FED6003248B3 /* api-topics-hot.json.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD6902583FED6003248B3 /* api-topics-hot.json.json */; };
 		798FD69425846F51003248B3 /* Signin_failure_captcha.html in Resources */ = {isa = PBXBuildFile; fileRef = 798FD69325846F51003248B3 /* Signin_failure_captcha.html */; };
 		79B05EC82571AD02001339B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B05EC72571AD02001339B0 /* Localizable.strings */; };
 		79B05ECF2571AD87001339B0 /* OCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B05ECE2571AD87001339B0 /* OCHelper.m */; };
@@ -105,12 +107,14 @@
 		793B50B325718F290081C55E /* StorableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableExt.swift; sourceTree = "<group>"; };
 		793B50B6257195AB0081C55E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		796A6F3825725D6D006E1B95 /* Signin.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin.html; sourceTree = "<group>"; };
-		797A472825847BED00F04954 /* Signin_success.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin_success.html; sourceTree = "<group>"; };
+		797A472825847BED00F04954 /* signin-success.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "signin-success.html"; sourceTree = "<group>"; };
 		797A472B25847D9E00F04954 /* UserInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserInfo.json; sourceTree = "<group>"; };
+		797A472E258482E700F04954 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		797A4731258484C500F04954 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerExt.swift; sourceTree = "<group>"; };
 		798FD68A2583FDC5003248B3 /* NodesAll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NodesAll.json; sourceTree = "<group>"; };
 		798FD68D2583FE46003248B3 /* TopicsLatest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TopicsLatest.json; sourceTree = "<group>"; };
-		798FD6902583FED6003248B3 /* TopicsHot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TopicsHot.json; sourceTree = "<group>"; };
+		798FD6902583FED6003248B3 /* api-topics-hot.json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "api-topics-hot.json.json"; sourceTree = "<group>"; };
 		798FD69325846F51003248B3 /* Signin_failure_captcha.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin_failure_captcha.html; sourceTree = "<group>"; };
 		79B05EBD2571AC1B001339B0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		79B05EC72571AD02001339B0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -263,9 +267,9 @@
 				796A6F3825725D6D006E1B95 /* Signin.html */,
 				798FD68A2583FDC5003248B3 /* NodesAll.json */,
 				798FD68D2583FE46003248B3 /* TopicsLatest.json */,
-				798FD6902583FED6003248B3 /* TopicsHot.json */,
+				798FD6902583FED6003248B3 /* api-topics-hot.json.json */,
 				798FD69325846F51003248B3 /* Signin_failure_captcha.html */,
-				797A472825847BED00F04954 /* Signin_success.html */,
+				797A472825847BED00F04954 /* signin-success.html */,
 				797A472B25847D9E00F04954 /* UserInfo.json */,
 			);
 			path = Resource;
@@ -342,6 +346,8 @@
 				793B50A625718D820081C55E /* User.swift */,
 				793B50A925718DBD0081C55E /* Preference.swift */,
 				7907B6A72572496300EF94F0 /* SiteInfo.swift */,
+				797A472E258482E700F04954 /* Node.swift */,
+				797A4731258484C500F04954 /* Topic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,11 +471,11 @@
 			files = (
 				798FD69425846F51003248B3 /* Signin_failure_captcha.html in Resources */,
 				798FD68E2583FE46003248B3 /* TopicsLatest.json in Resources */,
-				798FD6912583FED6003248B3 /* TopicsHot.json in Resources */,
+				798FD6912583FED6003248B3 /* api-topics-hot.json.json in Resources */,
 				796A6F3925725D6D006E1B95 /* Signin.html in Resources */,
 				79296ED6257184990002FF68 /* LaunchScreen.storyboard in Resources */,
 				798FD68B2583FDC5003248B3 /* NodesAll.json in Resources */,
-				797A472925847BED00F04954 /* Signin_success.html in Resources */,
+				797A472925847BED00F04954 /* signin-success.html in Resources */,
 				79B05EC82571AD02001339B0 /* Localizable.strings in Resources */,
 				797A472C25847D9E00F04954 /* UserInfo.json in Resources */,
 				79296ED3257184990002FF68 /* Assets.xcassets in Resources */,
@@ -566,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7907B6BC25724E5100EF94F0 /* LoginViewController.swift in Sources */,
+				797A472F258482E700F04954 /* Node.swift in Sources */,
 				7907B6C62572509100EF94F0 /* Router+Web.swift in Sources */,
 				793B509D25718CB70081C55E /* CollectionViewController.swift in Sources */,
 				79B05F532571B9DE001339B0 /* MineViewController.swift in Sources */,
@@ -578,6 +585,7 @@
 				7939EEAF257325110077164C /* LoginInputView.swift in Sources */,
 				7907B6A82572496300EF94F0 /* SiteInfo.swift in Sources */,
 				79B05F6B2571BC87001339B0 /* UIApplicationExt.swift in Sources */,
+				797A4732258484C500F04954 /* Topic.swift in Sources */,
 				79B05F4D2571B94E001339B0 /* GeneralViewController.swift in Sources */,
 				793B509325718BFB0081C55E /* AppDependency.swift in Sources */,
 				793B509925718C8F0081C55E /* CollectionViewReactor.swift in Sources */,

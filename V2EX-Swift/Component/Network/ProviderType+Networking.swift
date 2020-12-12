@@ -132,5 +132,16 @@ extension SWFrame.ProviderType {
             type: User.self
         )
     }
+    
+    /// V2EX热门节点：https://www.v2ex.com/api/topics/hot.json
+    func hot() -> Single<[Node]> {
+        networking.requestArray(
+            MultiTarget.init(
+                V2EXAPI.hot
+            ),
+            type: Topic.self
+        )
+        .map { $0.map { $0.node } }
+    }
 
 }

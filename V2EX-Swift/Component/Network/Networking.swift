@@ -13,16 +13,8 @@ struct Networking: NetworkingType {
     let provider: MoyaProvider<MultiTarget>
     
 //    static var stubClosure: MoyaProvider<Target>.StubClosure {
-//        return { target in
-//            if let tg2 = target.target as? ChargeAPI {
-//                switch tg2 {
-//                case .accelerate:
-//                    return .delayed(seconds: 2)
-//                default:
-//                    return .never
-//                }
-//            }
-//            return .never
+//        return { _ in
+//            return .delayed(seconds: 3)
 //        }
 //    }
     

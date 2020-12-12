@@ -130,18 +130,18 @@ struct R: Rswift.Validatable {
     static let signinHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin", pathExtension: "html")
     /// Resource file `Signin_failure_captcha.html`.
     static let signin_failure_captchaHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin_failure_captcha", pathExtension: "html")
-    /// Resource file `Signin_success.html`.
-    static let signin_successHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin_success", pathExtension: "html")
     /// Resource file `SiteInfo.json`.
     static let siteInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteInfo", pathExtension: "json")
     /// Resource file `SiteStats.json`.
     static let siteStatsJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteStats", pathExtension: "json")
-    /// Resource file `TopicsHot.json`.
-    static let topicsHotJson = Rswift.FileResource(bundle: R.hostingBundle, name: "TopicsHot", pathExtension: "json")
     /// Resource file `TopicsLatest.json`.
     static let topicsLatestJson = Rswift.FileResource(bundle: R.hostingBundle, name: "TopicsLatest", pathExtension: "json")
     /// Resource file `UserInfo.json`.
     static let userInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "UserInfo", pathExtension: "json")
+    /// Resource file `api-topics-hot.json.json`.
+    static let apiTopicsHotJsonJson = Rswift.FileResource(bundle: R.hostingBundle, name: "api-topics-hot.json", pathExtension: "json")
+    /// Resource file `signin-success.html`.
+    static let signinSuccessHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "signin-success", pathExtension: "html")
 
     /// `bundle.url(forResource: "NodesAll", withExtension: "json")`
     static func nodesAllJson(_: Void = ()) -> Foundation.URL? {
@@ -161,12 +161,6 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
-    /// `bundle.url(forResource: "Signin_success", withExtension: "html")`
-    static func signin_successHtml(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.signin_successHtml
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
     /// `bundle.url(forResource: "SiteInfo", withExtension: "json")`
     static func siteInfoJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.siteInfoJson
@@ -179,12 +173,6 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
-    /// `bundle.url(forResource: "TopicsHot", withExtension: "json")`
-    static func topicsHotJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.topicsHotJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
     /// `bundle.url(forResource: "TopicsLatest", withExtension: "json")`
     static func topicsLatestJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.topicsLatestJson
@@ -194,6 +182,18 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "UserInfo", withExtension: "json")`
     static func userInfoJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.userInfoJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "api-topics-hot.json", withExtension: "json")`
+    static func apiTopicsHotJsonJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.apiTopicsHotJsonJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "signin-success", withExtension: "html")`
+    static func signinSuccessHtml(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.signinSuccessHtml
       return fileResource.bundle.url(forResource: fileResource)
     }
 
