@@ -9,12 +9,14 @@ import Foundation
 
 enum V2EXError: Error {
     case invalidFormat
+    case loginFailure(String?)
 }
 
 extension V2EXError: CustomNSError {
     var errorCode: Int {
         switch self {
         case .invalidFormat: return 1
+        case .loginFailure: return 2
         }
     }
 }
@@ -23,6 +25,7 @@ extension V2EXError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidFormat: return R.string.localizable.errorInvalidFormat()
+        case let .loginFailure(message): return message ?? R.string.localizable.errorLogin()
         }
     }
 }

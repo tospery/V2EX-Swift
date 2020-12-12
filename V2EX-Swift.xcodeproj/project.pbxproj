@@ -39,6 +39,10 @@
 		793B50B7257195AB0081C55E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B50B6257195AB0081C55E /* Theme.swift */; };
 		796A6F3925725D6D006E1B95 /* Signin.html in Resources */ = {isa = PBXBuildFile; fileRef = 796A6F3825725D6D006E1B95 /* Signin.html */; };
 		798FD61E2583284D003248B3 /* LoginViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */; };
+		798FD68B2583FDC5003248B3 /* NodesAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD68A2583FDC5003248B3 /* NodesAll.json */; };
+		798FD68E2583FE46003248B3 /* TopicsLatest.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD68D2583FE46003248B3 /* TopicsLatest.json */; };
+		798FD6912583FED6003248B3 /* TopicsHot.json in Resources */ = {isa = PBXBuildFile; fileRef = 798FD6902583FED6003248B3 /* TopicsHot.json */; };
+		798FD69425846F51003248B3 /* Signin_failure_captcha.html in Resources */ = {isa = PBXBuildFile; fileRef = 798FD69325846F51003248B3 /* Signin_failure_captcha.html */; };
 		79B05EC82571AD02001339B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B05EC72571AD02001339B0 /* Localizable.strings */; };
 		79B05ECF2571AD87001339B0 /* OCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B05ECE2571AD87001339B0 /* OCHelper.m */; };
 		79B05EFF2571B188001339B0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B05EFE2571B188001339B0 /* R.generated.swift */; };
@@ -100,6 +104,10 @@
 		793B50B6257195AB0081C55E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		796A6F3825725D6D006E1B95 /* Signin.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin.html; sourceTree = "<group>"; };
 		798FD61D2583284D003248B3 /* LoginViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerExt.swift; sourceTree = "<group>"; };
+		798FD68A2583FDC5003248B3 /* NodesAll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NodesAll.json; sourceTree = "<group>"; };
+		798FD68D2583FE46003248B3 /* TopicsLatest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TopicsLatest.json; sourceTree = "<group>"; };
+		798FD6902583FED6003248B3 /* TopicsHot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TopicsHot.json; sourceTree = "<group>"; };
+		798FD69325846F51003248B3 /* Signin_failure_captcha.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin_failure_captcha.html; sourceTree = "<group>"; };
 		79B05EBD2571AC1B001339B0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		79B05EC72571AD02001339B0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		79B05ECA2571AD3A001339B0 /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -249,6 +257,10 @@
 				7907B69E2572491100EF94F0 /* SiteStats.json */,
 				7907B6A32572492200EF94F0 /* SiteInfo.json */,
 				796A6F3825725D6D006E1B95 /* Signin.html */,
+				798FD68A2583FDC5003248B3 /* NodesAll.json */,
+				798FD68D2583FE46003248B3 /* TopicsLatest.json */,
+				798FD6902583FED6003248B3 /* TopicsHot.json */,
+				798FD69325846F51003248B3 /* Signin_failure_captcha.html */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -445,8 +457,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798FD69425846F51003248B3 /* Signin_failure_captcha.html in Resources */,
+				798FD68E2583FE46003248B3 /* TopicsLatest.json in Resources */,
+				798FD6912583FED6003248B3 /* TopicsHot.json in Resources */,
 				796A6F3925725D6D006E1B95 /* Signin.html in Resources */,
 				79296ED6257184990002FF68 /* LaunchScreen.storyboard in Resources */,
+				798FD68B2583FDC5003248B3 /* NodesAll.json in Resources */,
 				79B05EC82571AD02001339B0 /* Localizable.strings in Resources */,
 				79296ED3257184990002FF68 /* Assets.xcassets in Resources */,
 				7907B69F2572491100EF94F0 /* SiteStats.json in Resources */,

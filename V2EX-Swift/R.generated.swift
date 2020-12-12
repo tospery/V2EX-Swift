@@ -122,18 +122,38 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 3 files.
+  /// This `R.file` struct is generated, and contains static references to 7 files.
   struct file {
+    /// Resource file `NodesAll.json`.
+    static let nodesAllJson = Rswift.FileResource(bundle: R.hostingBundle, name: "NodesAll", pathExtension: "json")
     /// Resource file `Signin.html`.
     static let signinHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin", pathExtension: "html")
+    /// Resource file `Signin_failure_captcha.html`.
+    static let signin_failure_captchaHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "Signin_failure_captcha", pathExtension: "html")
     /// Resource file `SiteInfo.json`.
     static let siteInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteInfo", pathExtension: "json")
     /// Resource file `SiteStats.json`.
     static let siteStatsJson = Rswift.FileResource(bundle: R.hostingBundle, name: "SiteStats", pathExtension: "json")
+    /// Resource file `TopicsHot.json`.
+    static let topicsHotJson = Rswift.FileResource(bundle: R.hostingBundle, name: "TopicsHot", pathExtension: "json")
+    /// Resource file `TopicsLatest.json`.
+    static let topicsLatestJson = Rswift.FileResource(bundle: R.hostingBundle, name: "TopicsLatest", pathExtension: "json")
+
+    /// `bundle.url(forResource: "NodesAll", withExtension: "json")`
+    static func nodesAllJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.nodesAllJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "Signin", withExtension: "html")`
     static func signinHtml(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.signinHtml
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Signin_failure_captcha", withExtension: "html")`
+    static func signin_failure_captchaHtml(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.signin_failure_captchaHtml
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -146,6 +166,18 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "SiteStats", withExtension: "json")`
     static func siteStatsJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.siteStatsJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "TopicsHot", withExtension: "json")`
+    static func topicsHotJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.topicsHotJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "TopicsLatest", withExtension: "json")`
+    static func topicsLatestJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.topicsLatestJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -277,7 +309,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 27 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 28 localization keys.
     struct localizable {
       /// Value: 创意工作者们的社区
       static let slogan = Rswift.StringResource(key: "Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -308,7 +340,9 @@ struct R: Rswift.Validatable {
       /// Value: 登录
       static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录即表示您已阅读并同意%@和%@
-      static let userTerm = Rswift.StringResource(key: "User Term", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let loginTerm = Rswift.StringResource(key: "Login.Term", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 登录失败，请稍后重试
+      static let errorLogin = Rswift.StringResource(key: "Error.Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
       static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
@@ -517,18 +551,31 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 登录即表示您已阅读并同意%@和%@
-      static func userTerm(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+      static func loginTerm(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("User Term", bundle: hostingBundle, comment: "")
+          let format = NSLocalizedString("Login.Term", bundle: hostingBundle, comment: "")
           return String(format: format, locale: applicationLocale, value1, value2)
         }
 
         guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "User Term"
+          return "Login.Term"
         }
 
-        let format = NSLocalizedString("User Term", bundle: bundle, comment: "")
+        let format = NSLocalizedString("Login.Term", bundle: bundle, comment: "")
         return String(format: format, locale: locale, value1, value2)
+      }
+
+      /// Value: 登录失败，请稍后重试
+      static func errorLogin(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error.Login", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error.Login"
+        }
+
+        return NSLocalizedString("Error.Login", bundle: bundle, comment: "")
       }
 
       /// Value: 确定

@@ -21,7 +21,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     lazy var termLabel: TTTAttributedLabel = {
         let label = TTTAttributedLabel.init(frame: .zero)
         label.delegate = self
-        let text = R.string.localizable.userTerm(
+        let text = R.string.localizable.loginTerm(
             R.string.localizable.termsOfService(),
             R.string.localizable.privacyAgreement()
         )

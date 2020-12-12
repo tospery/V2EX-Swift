@@ -23,8 +23,8 @@
 "Get Started" = "开始使用";
 "Privacy agreement" = "隐私政策";
 "Terms of service" = "服务条款";
-/* 格式 */
-"User Term" = "登录即表示您已阅读并同意%@和%@";
+/* 登录 */
+"Login.Term" = "登录即表示您已阅读并同意%@和%@";
 /* 错误 */
 "Error.Network.Title" = "重试";
 "Error.Server.Title" = "重试";
@@ -37,3 +37,4 @@
 "Error.Expired.Message" = "当前账户登录已过期，请重新登录";
 "Error.Illegal.Message" = "非法操作";
 "Error.InvalidFormat" = "无效的数据格式";
+"Error.Login" = "登录失败，请稍后重试";
