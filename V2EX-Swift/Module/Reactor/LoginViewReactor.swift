@@ -57,18 +57,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            return Observable.concat([
-                .just(.setError(nil)),
-                .just(.setInput(nil)),
-                .just(.setCaptchaing(true)),
-                self.provider.captcha().asObservable().map(Mutation.setInput),
-                .just(.setCaptchaing(false))
-            ]).catchError({
-                Observable.concat([
-                    .just(.setCaptchaing(false)),
-                    .just(.setError($0))
-                ])
-            })
+            return self.load()
         case let .username(username):
             return .just(.setUsername(username))
         case let .password(password):
@@ -76,32 +65,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case let .captcha(captcha):
             return .just(.setCaptcha(captcha))
         case .login:
-            guard
-                let username = self.currentState.username,
-                let password = self.currentState.password,
-                let captcha = self.currentState.captcha,
-                let input = self.currentState.input
-            else {
-                return .empty()
-            }
-            return Observable.concat([
-                .just(.setError(nil)),
-                .just(.setLoading(true)),
-                self.provider.login(
-                    username: username,
-                    password: password,
-                    captcha: captcha,
-                    input: input
-                )
-                .asObservable()
-                .map(Mutation.setUser),
-                .just(.setLoading(false))
-            ]).catchError({
-                Observable.concat([
-                    .just(.setLoading(false)),
-                    .just(.setError($0))
-                ])
-            })
+            return self.login()
         }
     }
     
@@ -138,6 +102,50 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     
     func transform(state: Observable<State>) -> Observable<State> {
         state
+    }
+    
+    func load() -> Observable<Mutation> {
+        return Observable.concat([
+            .just(.setError(nil)),
+            .just(.setInput(nil)),
+            .just(.setCaptchaing(true)),
+            self.provider.captcha().asObservable().map(Mutation.setInput),
+            .just(.setCaptchaing(false))
+        ]).catchError({
+            Observable.concat([
+                .just(.setCaptchaing(false)),
+                .just(.setError($0))
+            ])
+        })
+    }
+    
+    func login() -> Observable<Mutation> {
+        guard
+            let username = self.currentState.username,
+            let password = self.currentState.password,
+            let captcha = self.currentState.captcha,
+            let input = self.currentState.input
+        else {
+            return .empty()
+        }
+        return Observable.concat([
+            .just(.setError(nil)),
+            .just(.setLoading(true)),
+            self.provider.login(
+                username: username,
+                password: password,
+                captcha: captcha,
+                input: input
+            )
+            .asObservable()
+            .map(Mutation.setUser),
+            .just(.setLoading(false))
+        ]).catchError({
+            Observable.concat([
+                .just(.setLoading(false)),
+                .just(.setError($0))
+            ])
+        })
     }
 
 }

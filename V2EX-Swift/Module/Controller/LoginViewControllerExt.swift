@@ -11,7 +11,11 @@ extension LoginViewController {
     
     func bind(reactor: LoginViewReactor) {
         super.bind(reactor: reactor)
-        // action
+        self.toAction(reactor: reactor)
+        self.fromState(reactor: reactor)
+    }
+    
+    func toAction(reactor: LoginViewReactor) {
         Observable.merge([
             self.rx.viewDidLoad.map { Reactor.Action.load },
             self.rx.emptyDataSet.map { Reactor.Action.load },
@@ -34,7 +38,9 @@ extension LoginViewController {
         self.loginButton.rx.tap.map { Reactor.Action.login }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        // state
+    }
+    
+    func fromState(reactor: LoginViewReactor) {
         reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
