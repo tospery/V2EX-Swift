@@ -33,6 +33,8 @@ import UIKit
 @_exported import Umbrella
 @_exported import SwiftSoup
 @_exported import EasyAnimation
+@_exported import Parchment
+@_exported import SnapKit
 @_exported import TTTAttributedLabel
 @_exported import RxGesture
 @_exported import SWFrame

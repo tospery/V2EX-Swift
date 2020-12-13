@@ -83,6 +83,8 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default:
+                    return collectionView.emptyCell(for: indexPath)
                 }
             },
             configureSupplementaryView: { _, collectionView, kind, indexPath in
@@ -104,6 +106,8 @@ extension MineViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case .simple(let item):
             return Reusable.simpleCell.class.size(width: width, item: item)
+        default:
+            return .zero
         }
     }
 

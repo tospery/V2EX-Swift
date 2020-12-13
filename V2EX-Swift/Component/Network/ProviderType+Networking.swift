@@ -143,5 +143,15 @@ extension SWFrame.ProviderType {
         )
         .map { $0.map { $0.node } }
     }
+    
+    /// V2EX主题列表：https://www.v2ex.com/api/topics/show.json?node_id=184
+    func topics(nodeid: Int) -> Single<[Topic]> {
+        networking.requestArray(
+            MultiTarget.init(
+                V2EXAPI.topics(nodeid: nodeid)
+            ),
+            type: Topic.self
+        )
+    }
 
 }

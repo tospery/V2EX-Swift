@@ -122,7 +122,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 9 files.
+  /// This `R.file` struct is generated, and contains static references to 10 files.
   struct file {
     /// Resource file `NodesAll.json`.
     static let nodesAllJson = Rswift.FileResource(bundle: R.hostingBundle, name: "NodesAll", pathExtension: "json")
@@ -140,6 +140,8 @@ struct R: Rswift.Validatable {
     static let userInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "UserInfo", pathExtension: "json")
     /// Resource file `api-topics-hot.json.json`.
     static let apiTopicsHotJsonJson = Rswift.FileResource(bundle: R.hostingBundle, name: "api-topics-hot.json", pathExtension: "json")
+    /// Resource file `api-topics-show.json`.
+    static let apiTopicsShowJson = Rswift.FileResource(bundle: R.hostingBundle, name: "api-topics-show", pathExtension: "json")
     /// Resource file `signin-success.html`.
     static let signinSuccessHtml = Rswift.FileResource(bundle: R.hostingBundle, name: "signin-success", pathExtension: "html")
 
@@ -188,6 +190,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "api-topics-hot.json", withExtension: "json")`
     static func apiTopicsHotJsonJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.apiTopicsHotJsonJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "api-topics-show", withExtension: "json")`
+    static func apiTopicsShowJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.apiTopicsShowJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 

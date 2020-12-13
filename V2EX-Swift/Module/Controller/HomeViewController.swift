@@ -7,19 +7,25 @@
 
 import UIKit
 
-class HomeViewController: CollectionViewController, ReactorKit.View {
+class HomeViewController: ScrollViewController, ReactorKit.View {
     
-    struct Reusable {
-        static let simpleCell = ReusableCell<SimpleCell>()
-    }
-
-    let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
+    lazy var paging: PagingViewController = {
+        let paging = PagingViewController.init()
+        paging.borderOptions = .hidden
+        paging.menuItemSize = .selfSizing(estimatedWidth: 100, height: 40)
+        paging.menuItemLabelSpacing = 10
+        paging.indicatorOptions = .hidden
+        paging.font = .systemFont(ofSize: 15)
+        paging.selectedFont = .systemFont(ofSize: 15)
+        paging.textColor = .caption
+        paging.selectedTextColor = .foreground
+        return paging
+    }()
     
     init(_ navigator: NavigatorType, _ reactor: HomeViewReactor) {
         defer {
             self.reactor = reactor
         }
-        self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
         self.tabBarItem.title = reactor.currentState.title
     }
@@ -30,7 +36,17 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.simpleCell)
+        
+        self.addChild(self.paging)
+        self.view.addSubview(self.paging.view)
+        self.paging.view.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(navigationContentTopConstant)
+            make.bottom.equalToSuperview().offset(-tabBarHeight)
+        }
+        self.paging.didMove(toParent: self)
+        self.paging.dataSource = self
     }
     
     func bind(reactor: HomeViewReactor) {
@@ -51,50 +67,28 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.sections }
-            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
-            .disposed(by: self.disposeBag)
-    }
-
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: HomeViewReactor)
-        -> RxCollectionViewSectionedReloadDataSource<Section> {
-        return .init(
-            configureCell: { _, collectionView, indexPath, sectionItem in
-                switch sectionItem {
-                case .simple(let item):
-                    let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
-                    cell.bind(reactor: item)
-                    return cell
-                }
-            },
-            configureSupplementaryView: { _, collectionView, kind, indexPath in
-                return collectionView.emptyView(for: indexPath, kind: kind)
-            }
-        )
+//        reactor.state.map { $0.sections }
+//            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+//            .disposed(by: self.disposeBag)
     }
     
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let width = collectionView.sectionWidth(at: indexPath.section)
-        switch self.dataSource[indexPath] {
-        case .simple(let item):
-            return Reusable.simpleCell.class.size(width: width, item: item)
-        }
+extension HomeViewController: PagingViewControllerDataSource {
+    
+    func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
+        self.reactor!.currentState.nodes.count
     }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        referenceSizeForHeaderInSection section: Int
-    ) -> CGSize {
-        .zero
+    
+    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
+        let node = self.reactor!.currentState.nodes[index]
+        return PagingIndexItem.init(index: node.id, title: node.title)
+    }
+    
+    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+        let vc = UIViewController.init()
+        vc.view.backgroundColor = .random
+        return vc
     }
 
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -18,6 +18,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setError(Error?)
         case setTitle(String?)
         case setUser(User?)
+        case setNodes([Node])
     }
 
     struct State {
@@ -25,7 +26,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var error: Error?
         var title: String?
         var user: User?
-        var sections = [Section].init()
+        var nodes = [Node].init()
     }
 
     var initialState = State()
@@ -33,7 +34,8 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: self.title ?? R.string.localizable.home()
+            title: self.title ?? R.string.localizable.home(),
+            nodes: Node.cachedArray() ?? []
         )
     }
     
@@ -50,14 +52,13 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
         case let .setError(error):
-            if error != nil && state.isLoading {
-                newState.isLoading = false
-            }
             newState.error = error
         case let .setTitle(title):
             newState.title = title
         case let .setUser(user):
             newState.user = user
+        case let .setNodes(nodes):
+            newState.nodes = nodes
         }
         return newState
     }

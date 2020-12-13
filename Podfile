@@ -20,7 +20,7 @@ target 'V2EX-Swift' do
   pod 'R.swift', '5.3.0'
   pod 'SwiftLint', '0.41.0'
   pod 'Umbrella/Core', '0.9.0'
-  pod 'Parchment', '2.4.0'
+  pod 'Parchment', '3.0.0'
   pod 'SnapKit', '5.0.1'
   pod 'SwiftSoup', '2.3.2'
   pod 'EasyAnimation', '2.2.1'

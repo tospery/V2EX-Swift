@@ -24,7 +24,7 @@ PODS:
   - "NSObject+Rx (5.1.0)":
     - RxSwift (~> 5.1)
   - ObjectMapper (4.2.0)
-  - Parchment (2.4.0)
+  - Parchment (3.0.0)
   - QMUIKit/QMUICore (4.2.1):
     - QMUIKit/QMUILog
     - QMUIKit/QMUIWeakObjectContainer
@@ -132,7 +132,7 @@ DEPENDENCIES:
   - DefaultsKit (= 0.2.0)
   - EasyAnimation (= 2.2.1)
   - IQKeyboardManagerSwift (= 6.5.6)
-  - Parchment (= 2.4.0)
+  - Parchment (= 3.0.0)
   - R.swift (= 5.3.0)
   - ReusableKit/RxSwift (= 3.0.0)
   - RxGesture (= 3.0.2)
@@ -211,7 +211,7 @@ SPEC CHECKSUMS:
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
-  Parchment: 002785473861582385db5c6725165353c500198e
+  Parchment: 5b54e4b271719a0e94e02898ab7c3c0a00525cfa
   QMUIKit: 15294d6a350466e4a6f4df0333eac5bff474f995
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: 4170fb7161c67be3bc1a847040b79367d69c419f
@@ -240,6 +240,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 70a88c09e88da356f9836d9acd6fadb255da69d7
+PODFILE CHECKSUM: a0d944836a932957c867f71ada104a0d4f752ef8
 
 COCOAPODS: 1.9.1
