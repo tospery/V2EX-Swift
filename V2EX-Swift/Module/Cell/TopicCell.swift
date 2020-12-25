@@ -11,6 +11,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
 
     lazy var titleLabel: SWLabel = {
         let label = SWLabel()
+        label.lineBreakMode = .byCharWrapping
         label.font = .bold(16)
         label.sizeToFit()
         label.height = flat(label.font.lineHeight)
@@ -20,8 +21,9 @@ class TopicCell: CollectionCell, ReactorKit.View {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.borderLayer?.borders = .bottom
-        self.borderLayer?.borderColors = [BorderLayer.Border.bottom: UIColor.red]
-        self.borderLayer?.borderWidths = [BorderLayer.Border.bottom: 2]
+        self.borderLayer?.borderColors = [BorderLayer.Border.bottom: UIColor.border]
+        self.borderLayer?.borderWidths = [BorderLayer.Border.bottom: 1]
+        self.borderLayer?.borderInsets = [BorderLayer.Border.bottom: (10, 10)]
         self.contentView.addSubview(self.titleLabel)
 //        self.contentView.addSubview(self.mainView)
 //
@@ -31,7 +33,6 @@ class TopicCell: CollectionCell, ReactorKit.View {
 //        self.mainView.addSubview(self.indicatorImageView)
 
         themeService.rx
-            .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }

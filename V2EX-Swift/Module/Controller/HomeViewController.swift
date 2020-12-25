@@ -86,9 +86,10 @@ extension HomeViewController: PagingViewControllerDataSource {
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let vc = UIViewController.init()
-        vc.view.backgroundColor = .random
-        return vc
+        let node = self.reactor!.currentState.nodes[index]
+        let viewReactor = TopicListViewReactor.init(self.reactor!.provider, [Parameter.model: node])
+        let viewController = TopicListViewController.init(self.navigator, viewReactor)
+        return viewController
     }
 
 }

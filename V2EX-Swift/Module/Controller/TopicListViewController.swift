@@ -15,21 +15,13 @@ class TopicListViewController: CollectionViewController, ReactorKit.View {
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
     
-    lazy var testButton: SWButton = {
-        let button = SWButton.init(type: .custom)
-        button.backgroundColor = .red
-        button.sizeToFit()
-        button.size = .init(80)
-        return button
-    }()
-    
     init(_ navigator: NavigatorType, _ reactor: TopicListViewReactor) {
         defer {
             self.reactor = reactor
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
-        self.tabBarItem.title = reactor.currentState.title
+        self.hidesNavigationBar = reactor.parameters[Parameter.hideNavBar] as? Bool ?? true
     }
 
     required init?(coder: NSCoder) {
@@ -39,12 +31,6 @@ class TopicListViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.topicCell)
-        self.view.addSubview(self.testButton)
-        self.testButton.left = 100
-        self.testButton.top = 100
-        self.testButton.rx.tap
-            .subscribeNext(weak: self, type(of: self).tapTest)
-            .disposed(by: self.disposeBag)
     }
     
     func bind(reactor: TopicListViewReactor) {
@@ -61,10 +47,10 @@ class TopicListViewController: CollectionViewController, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.isLoading }
-            .distinctUntilChanged()
-            .bind(to: self.rx.loading())
-            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.isLoading }
+//            .distinctUntilChanged()
+//            .bind(to: self.rx.loading())
+//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
@@ -120,4 +106,3 @@ extension TopicListViewController: UICollectionViewDelegateFlowLayout {
     }
 
 }
-

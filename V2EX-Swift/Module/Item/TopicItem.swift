@@ -24,6 +24,11 @@ class TopicItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
+        guard let topic = model as? Topic else { return }
+        self.initialState = State(
+            icon: nil,
+            title: topic.title
+        )
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
