@@ -52,8 +52,23 @@ struct Node: ModelType, Identifiable, Subjective, Eventable {
         aliases                 <- map["aliases"]
     }
     
-    static func arrayKey(page: String? = nil) -> String {
-        return V2EXAPI.hot.samplePath ?? ""
+    static func cachedArray(page: String? = nil) -> [Self]? {
+        let key = self.arrayKey(page: page)
+        if let array = try? archiver.transformCodable(ofType: [Self].self).object(forKey: key) {
+            return array
+        }
+        if let path = Bundle.main.path(forResource: key, ofType: "json"),
+            let json = try? String(contentsOfFile: path, encoding: .utf8) {
+            return [Self](JSONString: json)
+        }
+        if let name = V2EXAPI.hot.samplePath,
+           let path = Bundle.main.path(forResource: name, ofType: "json"),
+           let json = try? String.init(contentsOfFile: path),
+           let nodes = [Topic].init(JSONString: json).map({ $0.map { $0.node } }),
+           nodes.count != 0 {
+            return nodes
+        }
+        return nil
     }
     
 }
