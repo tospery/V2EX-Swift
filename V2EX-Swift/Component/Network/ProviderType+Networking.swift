@@ -44,7 +44,7 @@ extension SWFrame.ProviderType {
                 let once = try? element.attr("value"),
                 elements.count >= 3
             else {
-                return .error(V2EXError.invalidFormat)
+                return .error(APPError.invalidFormat)
             }
             
             var username: String?
@@ -68,7 +68,7 @@ extension SWFrame.ProviderType {
             if username?.isEmpty ?? true ||
                 password?.isEmpty ?? true ||
                 captcha?.isEmpty ?? true {
-                return .error(V2EXError.invalidFormat)
+                return .error(APPError.invalidFormat)
             }
             
             return networking.requestRaw(
@@ -109,17 +109,17 @@ extension SWFrame.ProviderType {
         .mapString()
         .flatMap { html -> Single<User> in
             guard let doc = try? SwiftSoup.parse(html) else {
-                return .error(V2EXError.invalidFormat)
+                return .error(APPError.invalidFormat)
             }
             if let problem = try? doc.getElementsByClass("problem").first(),
                let text = try? problem.getElementsByTag("li").first()?.text() {
-                return .error(V2EXError.loginFailure(text))
+                return .error(APPError.loginFailure(text))
             }
             if let avatar = try? doc.getElementsByAttributeValue("class", "avatar").first()?.attr("src"),
                !avatar.isEmpty {
                 return self.userinfo(username: username)
             }
-            return .error(V2EXError.loginFailure(nil))
+            return .error(APPError.loginFailure(nil))
         }
     }
     

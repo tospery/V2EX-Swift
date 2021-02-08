@@ -98,11 +98,11 @@ final class AppDependency: AppDependencyType {
         _ application: UIApplication,
         leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) {
-        if UIApplication.shared.channel == .development {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.test(launchOptions: launchOptions)
-            }
+        #if DEBUG
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.test(launchOptions: launchOptions)
         }
+        #endif
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

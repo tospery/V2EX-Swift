@@ -54,7 +54,7 @@ extension LoginViewController {
             .bind(to: self.rx.captchaing)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.error }
-            .distinctUntilChanged({ $0?.asAPPError == $1?.asAPPError })
+            .distinctUntilChanged({ $0?.asSWError == $1?.asSWError })
             .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.user }

@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum V2EXError: Error {
+enum APPError: Error {
     case invalidFormat
     case loginFailure(String?)
 }
 
-extension V2EXError: CustomNSError {
+extension APPError: CustomNSError {
     var errorCode: Int {
         switch self {
         case .invalidFormat: return 1
@@ -21,7 +21,7 @@ extension V2EXError: CustomNSError {
     }
 }
 
-extension V2EXError: LocalizedError {
+extension APPError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidFormat: return R.string.localizable.errorInvalidFormat()
@@ -31,19 +31,19 @@ extension V2EXError: LocalizedError {
 }
 
 extension Error {
-    var asAPPError: APPError {
-        if let app = self as? APPError {
+    var asSWError: SWError {
+        if let app = self as? SWError {
             return app
         }
         
-        if let v2ex = self as? V2EXError {
-            return .illegal(v2ex.errorCode, v2ex.errorDescription)
+        if let xy = self as? APPError {
+            return .app(xy.errorCode, xy.errorDescription)
         }
         
         if let af = self as? AFError {
             switch af {
             case .sessionTaskFailed:
-                return .network
+                return .networkUnreachable
             default:
                 break
             }
@@ -55,7 +55,7 @@ extension Error {
                 if let af = error as? AFError {
                     switch af {
                     case .sessionTaskFailed:
-                        return .network
+                        return .networkUnreachable
                     default:
                         return .server(0, error.localizedDescription)
                     }
@@ -67,6 +67,6 @@ extension Error {
             }
         }
         
-        return .illegal(0, self.localizedDescription)
+        return .app(0, self.localizedDescription)
     }
 }
