@@ -85,13 +85,13 @@ final class AppDependency: AppDependencyType {
         Appearance.config()
         Router.initialize(self.provider, self.navigator)
         // 基础数据
-        if Node.cachedArray() == nil,
-           let path = V2EXAPI.hot.samplePath,
-            let string = try? String.init(contentsOf: path),
-            let nodes = [Topic].init(JSONString: string).map({ $0.map { $0.node } }),
-            nodes.count != 0 {
-            Node.storeArray(nodes)
-        }
+//        if Node.cachedArray() == nil,
+//           let path = V2EXAPI.hot.samplePath,
+//            let string = try? String.init(contentsOf: path),
+//            let nodes = [Topic].init(JSONString: string).map({ $0.map { $0.node } }),
+//            nodes.count != 0 {
+//            Node.storeArray(nodes)
+//        }
     }
 
     func application(

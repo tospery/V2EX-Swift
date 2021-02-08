@@ -52,4 +52,8 @@ struct Node: ModelType, Identifiable, Subjective, Eventable {
         aliases                 <- map["aliases"]
     }
     
+    static func arrayKey(page: String? = nil) -> String {
+        return V2EXAPI.hot.samplePath ?? ""
+    }
+    
 }
