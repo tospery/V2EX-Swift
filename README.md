@@ -4,8 +4,8 @@
 
 ## Screenshots
 
-<img alt="home" src="https://github.com/tospery/V2EX-Swift/blob/master/doc/home.jpg?raw=true" width="280">&nbsp;
-<img alt="setting" src="https://github.com/tospery/V2EX-Swift/blob/master/doc/login.jpg?raw=true" width="280">&nbsp;
+<img alt="home" src="https://github.com/tospery/V2EX-Swift/blob/main/doc/home.jpg?raw=true" width="280">&nbsp;
+<img alt="setting" src="https://github.com/tospery/V2EX-Swift/blob/main/doc/login.jpg?raw=true" width="280">&nbsp;
 
 ## Concept
 * **ReactorKit** https://github.com/ReactorKit/ReactorKit
