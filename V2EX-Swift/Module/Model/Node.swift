@@ -61,9 +61,7 @@ struct Node: ModelType, Identifiable, Subjective, Eventable {
             let json = try? String(contentsOfFile: path, encoding: .utf8) {
             return [Self](JSONString: json)
         }
-        if let name = V2EXAPI.hot.samplePath,
-           let path = Bundle.main.path(forResource: name, ofType: "json"),
-           let json = try? String.init(contentsOfFile: path),
+        if let json = String.init(data: V2EXAPI.hot.sampleData, encoding: .utf8),
            let nodes = [Topic].init(JSONString: json).map({ $0.map { $0.node } }),
            nodes.count != 0 {
             return nodes
