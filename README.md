@@ -12,4 +12,4 @@
 * **SWFrame** https://github.com/tospery/SWFrame
 
 ## Coffee
-<img alt="coffee" src="https://github.com/tospery/V2EX-Swift/blob/main/doc/coffee.jpg?raw=true" width="120">&nbsp;
+<img alt="coffee" src="https://github.com/tospery/V2EX-Swift/blob/main/doc/coffee.jpg?raw=true" width="300">&nbsp;
