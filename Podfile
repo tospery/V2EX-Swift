@@ -6,8 +6,8 @@ inhibit_all_warnings!
 
 target 'V2EX-Swift' do
 
-  pod 'SWFrame', :path => '../SWFrame'
-  # pod 'SWFrame', '1.3.3'
+  # pod 'SWFrame', :path => '../SWFrame'
+  pod 'SWFrame', '1.3.5'
 
   pod 'RxGesture', '3.0.2'
   pod 'RxTheme', '4.1.1'

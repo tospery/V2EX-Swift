@@ -15,3 +15,15 @@ func update<T: Subjective>(_ type: T.Type, _ value: T?) {
     }
     Subjection.for(type).accept(value)
 }
+
+func compare(_ left: ImageSource?, _ right: ImageSource?) -> Bool {
+    if let lImage = left as? UIImage,
+       let rImage = right as? UIImage {
+        return lImage == rImage
+    }
+    if let lURL = left as? URL,
+       let rURL = right as? URL {
+        return lURL == rURL
+    }
+    return false
+}

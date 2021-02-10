@@ -108,7 +108,6 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         let textField = UITextField.init()
         textField.isSecureTextEntry = true
         textField.font = .normal(16)
-        textField.text = "v2JX072142"
         textField.placeholder = R.string.localizable.password()
         textField.qmui_borderPosition = .bottom
         textField.qmui_borderWidth = 1

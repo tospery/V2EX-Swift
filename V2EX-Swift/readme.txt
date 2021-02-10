@@ -6,6 +6,9 @@ https://www.v2ex.com/_captcha?once=80363
 https://www.v2ex.com/api/members/show.json?id=520992
 https://www.v2ex.com/api/members/show.json?username=tospery
 
+今天 17:30
+昨天
+前天
 
 去掉警告
 项目重命名规则

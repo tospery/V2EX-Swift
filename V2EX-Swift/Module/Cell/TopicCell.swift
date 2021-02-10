@@ -9,15 +9,49 @@ import UIKit
 
 class TopicCell: CollectionCell, ReactorKit.View {
 
+    lazy var usernameLabel: SWLabel = {
+        let label = SWLabel()
+        label.font = .normal(12)
+        label.sizeToFit()
+        label.height = flat(label.font.lineHeight)
+        return label
+    }()
+    
+    lazy var repliesLabel: SWLabel = {
+        let label = SWLabel()
+        label.font = .normal(12)
+        label.sizeToFit()
+        label.height = flat(label.font.lineHeight)
+        return label
+    }()
+    
     lazy var titleLabel: SWLabel = {
         let label = SWLabel()
-        label.lineBreakMode = .byCharWrapping
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         label.font = .bold(16)
         label.sizeToFit()
         label.height = flat(label.font.lineHeight)
         return label
     }()
+    
+    lazy var contentLabel: SWLabel = {
+        let label = SWLabel()
+        label.numberOfLines = 3
+        label.lineBreakMode = .byTruncatingTail
+        label.font = .normal(14)
+        label.sizeToFit()
+        return label
+    }()
 
+    lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView.init()
+        imageView.sizeToFit()
+        imageView.size = .init(16)
+        imageView.cornerRadius = imageView.width / 2.f
+        return imageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.borderLayer?.borders = .bottom
@@ -25,15 +59,18 @@ class TopicCell: CollectionCell, ReactorKit.View {
         self.borderLayer?.borderWidths = [BorderLayer.Border.bottom: 1]
         self.borderLayer?.borderInsets = [BorderLayer.Border.bottom: (10, 10)]
         self.contentView.addSubview(self.titleLabel)
-//        self.contentView.addSubview(self.mainView)
-//
-//        self.mainView.addSubview(self.iconImageView)
-//        self.mainView.addSubview(self.titleLabel)
-//        self.mainView.addSubview(self.detailLabel)
-//        self.mainView.addSubview(self.indicatorImageView)
-
+        self.contentView.addSubview(self.usernameLabel)
+        self.contentView.addSubview(self.repliesLabel)
+        self.contentView.addSubview(self.contentLabel)
+        self.contentView.addSubview(self.avatarImageView)
+        
         themeService.rx
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.bodyColor }, to: self.contentLabel.rx.textColor)
+            .bind({ $0.captionColor }, to: [
+                self.usernameLabel.rx.textColor,
+                self.repliesLabel.rx.textColor
+            ])
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -44,9 +81,9 @@ class TopicCell: CollectionCell, ReactorKit.View {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.titleLabel.text = nil
-//        self.detailLabel.text = nil
-//        self.iconImageView.image = nil
-//        self.indicatorImageView.isHidden = true
+        self.contentLabel.text = nil
+        self.usernameLabel.text = nil
+        self.repliesLabel.text = nil
     }
     
     override class var layerClass: AnyClass {
@@ -65,31 +102,19 @@ class TopicCell: CollectionCell, ReactorKit.View {
         self.titleLabel.width = width
         self.titleLabel.left = margin
         self.titleLabel.top = 10
-//        self.mainView.width = self.contentView.width - 20 * 2
-//        self.mainView.height = self.contentView.height - 5 * 2
-//        self.mainView.left = self.mainView.leftWhenCenter
-//        self.mainView.top = self.mainView.topWhenCenter
-//
-//        self.iconImageView.sizeToFit()
-//        self.iconImageView.left = 10
-//        self.iconImageView.top = self.iconImageView.topWhenCenter
-//
-//        self.titleLabel.sizeToFit()
-//        self.titleLabel.left = self.iconImageView.right + 10
-//        self.titleLabel.top = self.titleLabel.topWhenCenter
-//
-//        self.indicatorImageView.right = self.mainView.width - 10
-//        self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
-//
-//        self.detailLabel.sizeToFit()
-//        self.detailLabel.right = self.indicatorImageView.isHidden ?
-//            self.indicatorImageView.centerX :
-//            self.indicatorImageView.left - 8
-//        self.detailLabel.top = self.detailLabel.topWhenCenter
-//
-//        if self.titleLabel.right >= self.detailLabel.left {
-//            self.titleLabel.extendToRight = self.detailLabel.left - 8
-//        }
+        self.avatarImageView.left = margin
+        self.avatarImageView.bottom = self.contentView.height - 8
+        self.usernameLabel.sizeToFit()
+        self.usernameLabel.left = self.avatarImageView.right + 4
+        self.usernameLabel.centerY = self.avatarImageView.centerY
+        self.repliesLabel.sizeToFit()
+        self.repliesLabel.right = self.contentView.width - margin
+        self.repliesLabel.centerY = self.avatarImageView.centerY
+        self.contentLabel.sizeToFit()
+        self.contentLabel.width = width
+        self.contentLabel.left = margin
+        self.contentLabel.top = self.titleLabel.bottom + 4
+        self.contentLabel.height = self.avatarImageView.top - self.contentLabel.top - 4
     }
 
     func bind(reactor: TopicItem) {
@@ -98,25 +123,31 @@ class TopicCell: CollectionCell, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.detail }
-//            .bind(to: self.detailLabel.rx.attributedText)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.icon }
-//            .bind(to: self.iconImageView.rx.image)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.icon == nil }
-//            .bind(to: self.iconImageView.rx.isHidden)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { !$0.indicated }
-//            .bind(to: self.indicatorImageView.rx.isHidden)
-//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.content }
+            .distinctUntilChanged()
+            .bind(to: self.contentLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.username }
+            .distinctUntilChanged()
+            .bind(to: self.usernameLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { "\($0.replies)评论" }
+            .distinctUntilChanged()
+            .bind(to: self.repliesLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.icon }
+            .distinctUntilChanged({ (left, right) -> Bool in
+                compare(left, right)
+            })
+            .bind(to: self.avatarImageView.rx.source)
+            .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        return CGSize(width: width, height: UIScreen.width / 375 * 80)
+        return CGSize(width: width, height: UIScreen.width / 375 * 100)
     }
 
 }

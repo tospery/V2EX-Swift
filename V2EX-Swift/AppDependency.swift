@@ -67,11 +67,6 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        self.provider.hot().subscribe(onSuccess: { nodes in
-//            log("a")
-//        }, onError: { error in
-//            log("b")
-//        }).disposed(by: self.disposeBag)
     }
     
     // MARK: - Lifecycle
@@ -85,13 +80,6 @@ final class AppDependency: AppDependencyType {
         Appearance.config()
         Router.initialize(self.provider, self.navigator)
         // 基础数据
-//        if Node.cachedArray() == nil,
-//           let path = V2EXAPI.hot.samplePath,
-//            let string = try? String.init(contentsOf: path),
-//            let nodes = [Topic].init(JSONString: string).map({ $0.map { $0.node } }),
-//            nodes.count != 0 {
-//            Node.storeArray(nodes)
-//        }
     }
 
     func application(

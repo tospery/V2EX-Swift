@@ -10,14 +10,19 @@ import Foundation
 class TopicItem: CollectionItem, ReactorKit.Reactor {
 
     typealias Action = NoAction
+    typealias Mutation = NoMutation
 
-    enum Mutation {
-        case setTitle(String?)
-    }
+//    enum Mutation {
+//        case setTitle(String?)
+//        case setContent(String?)
+//    }
 
     struct State {
-        var icon: ImageSource?
+        var replies = 0
         var title: String?
+        var content: String?
+        var username: String?
+        var icon: ImageSource?
     }
 
     var initialState = State()
@@ -26,19 +31,22 @@ class TopicItem: CollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let topic = model as? Topic else { return }
         self.initialState = State(
-            icon: nil,
-            title: topic.title
+            replies: topic.replies,
+            title: topic.title,
+            content: topic.content,
+            username: topic.member.username,
+            icon: topic.member.avatar.url
         )
     }
 
-    func reduce(state: State, mutation: Mutation) -> State {
-        var newState = state
-        switch mutation {
-        case let .setTitle(title):
-            newState.title = title
-        }
-        return newState
-    }
+//    func reduce(state: State, mutation: Mutation) -> State {
+//        var newState = state
+//        switch mutation {
+//        case let .setTitle(title):
+//            newState.title = title
+//        }
+//        return newState
+//    }
     
     func transform(action: Observable<NoAction>) -> Observable<NoAction> {
         action
