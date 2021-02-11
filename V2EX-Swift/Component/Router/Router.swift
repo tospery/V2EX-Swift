@@ -24,6 +24,15 @@ enum Router: String {
         }
     }
     
+    enum Topic: String {
+        case list           = "/list"
+        case detail         = "/detail"
+
+        var urlString: String {
+            UIApplication.shared.scheme + "://topic" + self.rawValue
+        }
+    }
+    
     var urlString: String {
         "\(UIApplication.shared.scheme)://\(self.rawValue)"
     }

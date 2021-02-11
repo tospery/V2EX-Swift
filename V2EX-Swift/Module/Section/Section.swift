@@ -10,6 +10,7 @@ import Foundation
 enum Section {
     case simples(header: String, items: [SectionItem])
     case topics(header: String, items: [SectionItem])
+    case topicTitles(header: String, items: [SectionItem])
 }
 
 extension Section: AnimatableSectionModelType {
@@ -18,6 +19,7 @@ extension Section: AnimatableSectionModelType {
         switch self {
         case let .simples(header, _): return header
         case let .topics(header, _): return header
+        case let .topicTitles(header, _): return header
         }
     }
 
@@ -25,6 +27,7 @@ extension Section: AnimatableSectionModelType {
         switch self {
         case let .simples(_, items): return items
         case let .topics(_, items): return items
+        case let .topicTitles(_, items): return items
         }
     }
 
@@ -34,6 +37,8 @@ extension Section: AnimatableSectionModelType {
             self = .simples(header: header, items: items)
         case let .topics(header, _):
             self = .topics(header: header, items: items)
+        case let .topicTitles(header, _):
+            self = .topicTitles(header: header, items: items)
         }
     }
     
@@ -42,12 +47,15 @@ extension Section: AnimatableSectionModelType {
 enum SectionItem: IdentifiableType, Equatable {
     case simple(SimpleItem)
     case topic(TopicItem)
+    case topicTitle(TopicTitleItem)
 
     var identity: String {
         switch self {
         case let .simple(item):
             return item.description
         case let .topic(item):
+            return item.description
+        case let .topicTitle(item):
             return item.description
         }
     }
@@ -57,6 +65,8 @@ enum SectionItem: IdentifiableType, Equatable {
         case let (.simple(left), .simple(right)):
             return left.description == right.description
         case let (.topic(left), .topic(right)):
+            return left.description == right.description
+        case let (.topicTitle(left), .topicTitle(right)):
             return left.description == right.description
         default:
             return false

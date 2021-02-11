@@ -23,6 +23,9 @@ extension Router {
         navigator.register(self.login.urlString) { url, values, context in
             LoginViewController(navigator, LoginViewReactor(provider, parameters(url, values, context)))
         }
+        navigator.register(self.Topic.detail.urlString) { url, values, context in
+            TopicDetailViewController(navigator, TopicDetailViewReactor(provider, parameters(url, values, context)))
+        }
     }
     
 }

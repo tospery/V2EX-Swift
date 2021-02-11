@@ -1,27 +1,26 @@
 //
-//  TopicListViewController.swift
+//  TopicDetailViewController.swift
 //  V2EX-Swift
 //
-//  Created by 杨建祥 on 2020/12/12.
+//  Created by 杨建祥 on 2021/2/11.
 //
 
 import UIKit
 
-class TopicListViewController: CollectionViewController, ReactorKit.View {
+class TopicDetailViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
-        static let topicCell = ReusableCell<TopicCell>()
+        static let titleCell = ReusableCell<TopicTitleCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
     
-    init(_ navigator: NavigatorType, _ reactor: TopicListViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: TopicDetailViewReactor) {
         defer {
             self.reactor = reactor
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
-        self.hidesNavigationBar = reactor.parameters[Parameter.hideNavBar] as? Bool ?? true
     }
 
     required init?(coder: NSCoder) {
@@ -30,18 +29,14 @@ class TopicListViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.topicCell)
-        self.collectionView.rx.itemSelected(dataSource: self.dataSource)
-            .subscribeNext(weak: self, type(of: self).tapCell)
-            .disposed(by: self.disposeBag)
+        self.collectionView.register(Reusable.titleCell)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.collectionView.frame = self.view.bounds
     }
     
-    func bind(reactor: TopicListViewReactor) {
+    func bind(reactor: TopicDetailViewReactor) {
         super.bind(reactor: reactor)
         // action
         Observable.merge([
@@ -64,25 +59,17 @@ class TopicListViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
     
-    func tapCell(event: ControlEvent<SectionItem>.Element) {
-        switch event {
-        case let .topic(item):
-            guard let topic = item.model as? Topic else { return }
-            self.navigator.push(Router.Topic.detail.urlString, context: [
-                Parameter.model: topic
-            ])
-        default:
-            break
-        }
+    func tapTest(event: ControlEvent<Void>.Element) {
+        self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TopicListViewReactor)
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TopicDetailViewReactor)
         -> RxCollectionViewSectionedReloadDataSource<Section> {
         return .init(
             configureCell: { _, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case .topic(let item):
-                    let cell = collectionView.dequeue(Reusable.topicCell, for: indexPath)
+                case .topicTitle(let item):
+                    let cell = collectionView.dequeue(Reusable.titleCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 default:
@@ -97,7 +84,7 @@ class TopicListViewController: CollectionViewController, ReactorKit.View {
     
 }
 
-extension TopicListViewController: UICollectionViewDelegateFlowLayout {
+extension TopicDetailViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(
         _ collectionView: UICollectionView,
@@ -106,8 +93,8 @@ extension TopicListViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case .topic(let item):
-            return Reusable.topicCell.class.size(width: width, item: item)
+        case .topicTitle(let item):
+            return Reusable.titleCell.class.size(width: width, item: item)
         default:
             return .zero
         }

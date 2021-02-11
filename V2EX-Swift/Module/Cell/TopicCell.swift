@@ -37,7 +37,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
     
     lazy var contentLabel: SWLabel = {
         let label = SWLabel()
-        label.numberOfLines = 3
+        label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         label.font = .normal(14)
         label.sizeToFit()
@@ -84,6 +84,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
         self.contentLabel.text = nil
         self.usernameLabel.text = nil
         self.repliesLabel.text = nil
+        self.avatarImageView.image = nil
     }
     
     override class var layerClass: AnyClass {
@@ -147,7 +148,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        return CGSize(width: width, height: UIScreen.width / 375 * 100)
+        return CGSize(width: width, height: 100)
     }
 
 }

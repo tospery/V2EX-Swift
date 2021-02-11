@@ -333,8 +333,10 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 28 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 29 localization keys.
     struct localizable {
+      /// Value: 主题详情
+      static let detailOfTopic = Rswift.StringResource(key: "Detail of topic", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 创意工作者们的社区
       static let slogan = Rswift.StringResource(key: "Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
@@ -391,6 +393,19 @@ struct R: Rswift.Validatable {
       static let home = Rswift.StringResource(key: "Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 验证码
       static let captcha = Rswift.StringResource(key: "Captcha", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: 主题详情
+      static func detailOfTopic(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Detail of topic", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Detail of topic"
+        }
+
+        return NSLocalizedString("Detail of topic", bundle: bundle, comment: "")
+      }
 
       /// Value: 创意工作者们的社区
       static func slogan(preferredLanguages: [String]? = nil) -> String {
