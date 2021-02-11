@@ -77,7 +77,8 @@ class TopicDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             }
             let sectionItems: [SectionItem] = [
                 .topicTitle(TopicTitleItem.init(topic)),
-                .topicUser(TopicUserItem.init(topic))
+                .topicUser(TopicUserItem.init(topic)),
+                .article(ArticleItem.init(topic))
             ]
             newState.sections = [
                 .sectionItems(header: "", items: sectionItems)

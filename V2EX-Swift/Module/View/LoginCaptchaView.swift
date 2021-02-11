@@ -11,7 +11,7 @@ class LoginCaptchaView: UIView {
     
     lazy var textField: UITextField = {
         let textField = UITextField.init()
-        textField.font = .normal(16)
+        textField.font = .systemFont(ofSize: 16)
         textField.placeholder = R.string.localizable.captcha()
         textField.qmui_borderPosition = .bottom
         textField.qmui_borderWidth = 1

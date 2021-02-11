@@ -12,6 +12,7 @@ class TopicDetailViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
         static let titleCell    = ReusableCell<TopicTitleCell>()
         static let userCell     = ReusableCell<TopicUserCell>()
+        static let articleCell  = ReusableCell<ArticleCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
@@ -32,6 +33,7 @@ class TopicDetailViewController: CollectionViewController, ReactorKit.View {
         super.viewDidLoad()
         self.collectionView.register(Reusable.titleCell)
         self.collectionView.register(Reusable.userCell)
+        self.collectionView.register(Reusable.articleCell)
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,6 +80,10 @@ class TopicDetailViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                case .article(let item):
+                    let cell = collectionView.dequeue(Reusable.articleCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
                 default:
                     return collectionView.emptyCell(for: indexPath)
                 }
@@ -103,6 +109,8 @@ extension TopicDetailViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.titleCell.class.size(width: width, item: item)
         case .topicUser(let item):
             return Reusable.userCell.class.size(width: width, item: item)
+        case .article(let item):
+            return Reusable.articleCell.class.size(width: width, item: item)
         default:
             return .zero
         }

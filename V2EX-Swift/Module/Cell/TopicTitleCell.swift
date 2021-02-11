@@ -55,7 +55,7 @@ class TopicTitleCell: CollectionCell, ReactorKit.View {
     static var titleLabel: SWLabel = {
         let label = SWLabel()
         label.numberOfLines = 0
-        label.font = .bold(17)
+        label.font = .boldSystemFont(ofSize: 17)
         label.sizeToFit()
         label.qmui_lineHeight = flat(label.font.lineHeight + 4)
         return label

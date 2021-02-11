@@ -42,6 +42,8 @@
 		793F4A5725D4CB4A00C23A3F /* TopicTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F4A5625D4CB4A00C23A3F /* TopicTitleCell.swift */; };
 		793F4A5C25D511D700C23A3F /* TopicUserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F4A5B25D511D700C23A3F /* TopicUserItem.swift */; };
 		793F4A5F25D511E400C23A3F /* TopicUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F4A5E25D511E400C23A3F /* TopicUserCell.swift */; };
+		793F4A6A25D5229400C23A3F /* ArticleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F4A6925D5229400C23A3F /* ArticleItem.swift */; };
+		793F4A6D25D5229E00C23A3F /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F4A6C25D5229E00C23A3F /* ArticleCell.swift */; };
 		796A6F3925725D6D006E1B95 /* Signin.html in Resources */ = {isa = PBXBuildFile; fileRef = 796A6F3825725D6D006E1B95 /* Signin.html */; };
 		797A472925847BED00F04954 /* signin-success.html in Resources */ = {isa = PBXBuildFile; fileRef = 797A472825847BED00F04954 /* signin-success.html */; };
 		797A472C25847D9E00F04954 /* UserInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 797A472B25847D9E00F04954 /* UserInfo.json */; };
@@ -121,6 +123,8 @@
 		793F4A5625D4CB4A00C23A3F /* TopicTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTitleCell.swift; sourceTree = "<group>"; };
 		793F4A5B25D511D700C23A3F /* TopicUserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicUserItem.swift; sourceTree = "<group>"; };
 		793F4A5E25D511E400C23A3F /* TopicUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicUserCell.swift; sourceTree = "<group>"; };
+		793F4A6925D5229400C23A3F /* ArticleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleItem.swift; sourceTree = "<group>"; };
+		793F4A6C25D5229E00C23A3F /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		796A6F3825725D6D006E1B95 /* Signin.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Signin.html; sourceTree = "<group>"; };
 		797A472825847BED00F04954 /* signin-success.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "signin-success.html"; sourceTree = "<group>"; };
 		797A472B25847D9E00F04954 /* UserInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserInfo.json; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 				79C09F0B25859A330051CF42 /* TopicItem.swift */,
 				793F4A5325D4CB4000C23A3F /* TopicTitleItem.swift */,
 				793F4A5B25D511D700C23A3F /* TopicUserItem.swift */,
+				793F4A6925D5229400C23A3F /* ArticleItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				79C09F0E25859A3D0051CF42 /* TopicCell.swift */,
 				793F4A5625D4CB4A00C23A3F /* TopicTitleCell.swift */,
 				793F4A5E25D511E400C23A3F /* TopicUserCell.swift */,
+				793F4A6C25D5229E00C23A3F /* ArticleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -606,6 +612,7 @@
 				7907B6BC25724E5100EF94F0 /* LoginViewController.swift in Sources */,
 				797A472F258482E700F04954 /* Node.swift in Sources */,
 				7907B6C62572509100EF94F0 /* Router+Web.swift in Sources */,
+				793F4A6D25D5229E00C23A3F /* ArticleCell.swift in Sources */,
 				793F4A5125D4CA1E00C23A3F /* TopicDetailViewController.swift in Sources */,
 				793B509D25718CB70081C55E /* CollectionViewController.swift in Sources */,
 				79B05F532571B9DE001339B0 /* MineViewController.swift in Sources */,
@@ -628,6 +635,7 @@
 				793F4A4E25D4CA0E00C23A3F /* TopicDetailViewReactor.swift in Sources */,
 				7907B6B925724E4300EF94F0 /* LoginViewReactor.swift in Sources */,
 				79B05F5C2571BBA7001339B0 /* Library.swift in Sources */,
+				793F4A6A25D5229400C23A3F /* ArticleItem.swift in Sources */,
 				79296ECA257184990002FF68 /* AppDelegate.swift in Sources */,
 				79B05F412571B5D8001339B0 /* SimpleCell.swift in Sources */,
 				793B50B425718F290081C55E /* StorableExt.swift in Sources */,

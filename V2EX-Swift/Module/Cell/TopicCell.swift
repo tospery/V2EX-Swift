@@ -11,7 +11,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
 
     lazy var usernameLabel: SWLabel = {
         let label = SWLabel()
-        label.font = .normal(12)
+        label.font = .systemFont(ofSize: 12)
         label.sizeToFit()
         label.height = flat(label.font.lineHeight)
         return label
@@ -19,7 +19,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
     
     lazy var repliesLabel: SWLabel = {
         let label = SWLabel()
-        label.font = .normal(12)
+        label.font = .systemFont(ofSize: 12)
         label.sizeToFit()
         label.height = flat(label.font.lineHeight)
         return label
@@ -29,7 +29,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
         let label = SWLabel()
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
-        label.font = .bold(16)
+        label.font = .boldSystemFont(ofSize: 16)
         label.sizeToFit()
         label.height = flat(label.font.lineHeight)
         return label
@@ -39,7 +39,7 @@ class TopicCell: CollectionCell, ReactorKit.View {
         let label = SWLabel()
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
-        label.font = .normal(14)
+        label.font = .systemFont(ofSize: 14)
         label.sizeToFit()
         return label
     }()

@@ -11,7 +11,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     lazy var sloganLabel: UILabel = {
         let label = UILabel.init()
-        label.font = .normal(18)
+        label.font = .systemFont(ofSize: 18)
         label.textAlignment = .center
         label.text = R.string.localizable.slogan()
         label.sizeToFit()
@@ -20,7 +20,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     lazy var errorLabel: UILabel = {
         let label = UILabel.init()
-        label.font = .normal(10)
+        label.font = .systemFont(ofSize: 10)
         label.sizeToFit()
         label.height = label.font.lineHeight
         return label
@@ -36,7 +36,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         let termCount = R.string.localizable.termsOfService().count
         let privacyCount = R.string.localizable.privacyAgreement().count
         label.setText(
-            text.styled(with: .color(.body), .font(.normal(12)))
+            text.styled(with: .color(.body), .font(.systemFont(ofSize: 12)))
         )
         label.addLink(
             TTTAttributedLabelLink.init(
@@ -95,7 +95,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     lazy var usernameTextField: UITextField = {
         let textField = UITextField.init()
-        textField.font = .normal(16)
+        textField.font = .systemFont(ofSize: 16)
         textField.placeholder = R.string.localizable.username()
         textField.text = "tospery"
         textField.qmui_borderPosition = .bottom
@@ -107,7 +107,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     lazy var passwordTextField: UITextField = {
         let textField = UITextField.init()
         textField.isSecureTextEntry = true
-        textField.font = .normal(16)
+        textField.font = .systemFont(ofSize: 16)
         textField.placeholder = R.string.localizable.password()
         textField.qmui_borderPosition = .bottom
         textField.qmui_borderWidth = 1
@@ -130,7 +130,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     lazy var loginButton: UIButton = {
         let button = UIButton.init(type: .custom)
-        button.titleLabel?.font = .normal(17)
+        button.titleLabel?.font = .systemFont(ofSize: 17)
         button.setTitle(R.string.localizable.getStarted(), for: .normal)
         button.sizeToFit()
         button.height = 44

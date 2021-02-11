@@ -11,14 +11,14 @@ class SimpleCell: CollectionCell, ReactorKit.View {
 
     lazy var titleLabel: SWLabel = {
         let label = SWLabel()
-        label.font = .normal(16)
+        label.font = .systemFont(ofSize: 16)
         label.sizeToFit()
         return label
     }()
 
     lazy var detailLabel: SWLabel = {
         let label = SWLabel()
-        label.font = .normal(14)
+        label.font = .systemFont(ofSize: 14)
         label.textAlignment = .right
         label.sizeToFit()
         return label
