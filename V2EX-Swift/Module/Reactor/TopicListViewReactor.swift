@@ -77,7 +77,7 @@ class TopicListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             let sectionItems = items.map { item -> SectionItem in
                 SectionItem.topic(item)
             }
-            newState.sections = [.topics(header: "", items: sectionItems)]
+            newState.sections = [.sectionItems(header: "", items: sectionItems)]
         }
         return newState
     }

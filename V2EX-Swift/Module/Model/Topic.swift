@@ -14,9 +14,9 @@ struct Topic: ModelType, Identifiable, Subjective, Eventable {
     
     var id = 0
     var replies = 0
-    var created: UInt64 = 0
-    var lastModified: UInt64 = 0
-    var lastTouched: UInt64 = 0
+    var created: TimeInterval = 0
+    var lastModified: TimeInterval = 0
+    var lastTouched: TimeInterval = 0
     var title = ""
     var content = ""
     var contentRendered = ""

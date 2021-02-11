@@ -10,12 +10,7 @@ import UIKit
 class TopicTitleCell: CollectionCell, ReactorKit.View {
 
     lazy var titleLabel: SWLabel = {
-        let label = SWLabel()
-        label.numberOfLines = 0
-        label.font = .bold(17)
-        label.sizeToFit()
-        label.qmui_lineHeight = flat(label.font.lineHeight + 8)
-        return label
+        return type(of: self).titleLabel
     }()
     
     override init(frame: CGRect) {
@@ -56,9 +51,27 @@ class TopicTitleCell: CollectionCell, ReactorKit.View {
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
+    
+    static var titleLabel: SWLabel = {
+        let label = SWLabel()
+        label.numberOfLines = 0
+        label.font = .bold(17)
+        label.sizeToFit()
+        label.qmui_lineHeight = flat(label.font.lineHeight + 4)
+        return label
+    }()
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        return CGSize(width: width, height: 100)
+        guard let title = (item.model as? Topic)?.title else { return .zero }
+        let label = self.titleLabel
+        label.text = title
+        let height = label.sizeThatFits(
+            .init(
+                width: (UIScreen.width - 20 * 2),
+                height: .greatestFiniteMagnitude
+            )
+        ).height + 20
+        return CGSize(width: width, height: height)
     }
 
 }

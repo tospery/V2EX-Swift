@@ -333,8 +333,10 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 29 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 31 localization keys.
     struct localizable {
+      /// Value: +关注
+      static let follow = Rswift.StringResource(key: "Follow", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 主题详情
       static let detailOfTopic = Rswift.StringResource(key: "Detail of topic", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 创意工作者们的社区
@@ -345,6 +347,8 @@ struct R: Rswift.Validatable {
       static let and = Rswift.StringResource(key: "And", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 密码
       static let password = Rswift.StringResource(key: "Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 已关注
+      static let followed = Rswift.StringResource(key: "Followed", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 开始使用
       static let getStarted = Rswift.StringResource(key: "Get Started", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 当前账户登录已过期，请重新登录
@@ -393,6 +397,19 @@ struct R: Rswift.Validatable {
       static let home = Rswift.StringResource(key: "Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 验证码
       static let captcha = Rswift.StringResource(key: "Captcha", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: +关注
+      static func follow(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Follow", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Follow"
+        }
+
+        return NSLocalizedString("Follow", bundle: bundle, comment: "")
+      }
 
       /// Value: 主题详情
       static func detailOfTopic(preferredLanguages: [String]? = nil) -> String {
@@ -457,6 +474,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Password", bundle: bundle, comment: "")
+      }
+
+      /// Value: 已关注
+      static func followed(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Followed", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Followed"
+        }
+
+        return NSLocalizedString("Followed", bundle: bundle, comment: "")
       }
 
       /// Value: 开始使用
