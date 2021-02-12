@@ -11,20 +11,20 @@ import WebKit
 class ArticleCell: CollectionCell, ReactorKit.View {
 
     lazy var webView: WKWebView = {
-        let configuration = WKWebViewConfiguration.init()
-        let preferences = WKPreferences.init()
-        preferences.javaScriptCanOpenWindowsAutomatically = true
-        configuration.preferences = preferences
-        let fontString = """
+        let metaString = """
         var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport');
         meta.setAttribute('content', 'width=device-width');
         document.getElementsByTagName('head')[0].appendChild(meta);
         """
-        let fontScript = WKUserScript.init(source: fontString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let metaScript = WKUserScript.init(source: metaString, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         let userContentController = WKUserContentController.init()
-        userContentController.addUserScript(fontScript)
+        userContentController.addUserScript(metaScript)
+        let configuration = WKWebViewConfiguration.init()
         configuration.userContentController = userContentController
-        let webView = WKWebView.init(frame: .zero, configuration: configuration)
+        let webView = WKWebView.init(
+            frame: .zero,
+            configuration: configuration
+        )
         return webView
     }()
     
@@ -61,7 +61,7 @@ class ArticleCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        return CGSize(width: width, height: 200)
+        return CGSize(width: width, height: UIScreen.height - navigationContentTopConstant - 50)
     }
 
 }
