@@ -9,10 +9,19 @@ import Foundation
 
 class ArticleItem: CollectionItem, ReactorKit.Reactor {
 
-    typealias Action = NoAction
-    typealias Mutation = NoMutation
+//    typealias Action = NoAction
+//    typealias Mutation = NoMutation
+    
+    enum Action {
+        case height(CGFloat)
+    }
+
+    enum Mutation {
+        case setHeight(CGFloat)
+    }
 
     struct State {
+        var height = 0.f
         var html = ""
     }
 
@@ -26,13 +35,29 @@ class ArticleItem: CollectionItem, ReactorKit.Reactor {
         )
     }
 
-    func transform(action: Observable<NoAction>) -> Observable<NoAction> {
-        action
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .height(height):
+            return .just(.setHeight(height))
+        }
     }
 
-    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        mutation
+    func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        switch mutation {
+        case let .setHeight(height):
+            newState.height = height
+        }
+        return newState
     }
+    
+//    func transform(action: Observable<NoAction>) -> Observable<NoAction> {
+//        action
+//    }
+    
+//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+//        mutation
+//    }
 
     func transform(state: Observable<State>) -> Observable<State> {
         state

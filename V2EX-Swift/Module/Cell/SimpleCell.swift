@@ -116,7 +116,7 @@ class SimpleCell: CollectionCell, ReactorKit.View {
             .distinctUntilChanged({ (left, right) -> Bool in
                 compare(left, right)
             })
-            .bind(to: self.iconImageView.rx.source)
+            .bind(to: self.iconImageView.rx.imageSource)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)

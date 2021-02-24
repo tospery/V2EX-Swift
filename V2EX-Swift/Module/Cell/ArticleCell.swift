@@ -25,6 +25,7 @@ class ArticleCell: CollectionCell, ReactorKit.View {
             frame: .zero,
             configuration: configuration
         )
+        webView.navigationDelegate = self
         return webView
     }()
     
@@ -61,7 +62,19 @@ class ArticleCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        return CGSize(width: width, height: UIScreen.height - navigationContentTopConstant - 50)
+        guard let reactor = item as? ArticleItem else { return .zero }
+        log("计算高度: \(reactor.currentState.height)")
+        return CGSize(width: width, height: reactor.currentState.height)
     }
 
+}
+
+extension ArticleCell: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        guard let height = self.reactor?.currentState.height, height == 0 else { return }
+        webView.evaluateJavaScript("document.body.scrollHeight") { (result, _) in
+            guard let number = result as? NSNumber else { return }
+            self.reactor?.action.onNext(.height(number.doubleValue.f + 50.f))
+        }
+    }
 }

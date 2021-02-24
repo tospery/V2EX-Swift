@@ -81,7 +81,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                 switch sectionItem {
                 case .simple(let item):
                     let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
-                    cell.bind(reactor: item)
+                    cell.reactor = item
                     return cell
                 default:
                     return collectionView.emptyCell(for: indexPath)

@@ -74,15 +74,22 @@ class TopicDetailViewController: CollectionViewController, ReactorKit.View {
                 switch sectionItem {
                 case .topicTitle(let item):
                     let cell = collectionView.dequeue(Reusable.titleCell, for: indexPath)
-                    cell.bind(reactor: item)
+                    cell.reactor = item
                     return cell
                 case .topicUser(let item):
                     let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
-                    cell.bind(reactor: item)
+                    cell.reactor = item
                     return cell
                 case .article(let item):
                     let cell = collectionView.dequeue(Reusable.articleCell, for: indexPath)
-                    cell.bind(reactor: item)
+                    cell.reactor = item
+                    item.state.map { $0.height }
+                        .distinctUntilChanged()
+                        .skip(1)
+                        .subscribe(onNext: { height in
+                            log("开始reload -> \(height)")
+                            collectionView.reloadData()
+                        }).disposed(by: cell.disposeBag)
                     return cell
                 default:
                     return collectionView.emptyCell(for: indexPath)
@@ -92,6 +99,18 @@ class TopicDetailViewController: CollectionViewController, ReactorKit.View {
                 return collectionView.emptyView(for: indexPath, kind: kind)
             }
         )
+    }
+    
+    func handleHeight1(event: ControlEvent<CGFloat>.Element) {
+        log("")
+    }
+    
+    static func handleHeight3(event: CGFloat) {
+        log("")
+    }
+    
+    static func handleHeight2(event: ControlEvent<CGFloat>.Element) {
+        log("")
     }
     
 }
