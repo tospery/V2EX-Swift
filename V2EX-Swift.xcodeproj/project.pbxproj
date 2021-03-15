@@ -80,9 +80,9 @@
 		79B355C025849EFE001CDE4C /* api-topics-show.json in Resources */ = {isa = PBXBuildFile; fileRef = 79B355BF25849EFE001CDE4C /* api-topics-show.json */; };
 		79B355C325849F38001CDE4C /* TopicListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B355C225849F38001CDE4C /* TopicListViewReactor.swift */; };
 		79B355C625849F45001CDE4C /* TopicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B355C525849F45001CDE4C /* TopicListViewController.swift */; };
-		79BBEE7F257236FA002D9A47 /* QMUIConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BBEE7E257236FA002D9A47 /* QMUIConfigurationTemplate.m */; };
 		79C09F0C25859A330051CF42 /* TopicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C09F0B25859A330051CF42 /* TopicItem.swift */; };
 		79C09F0F25859A3D0051CF42 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C09F0E25859A3D0051CF42 /* TopicCell.swift */; };
+		8C72CEDA25FF382D008A1367 /* QMUIConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C72CED925FF382D008A1367 /* QMUIConfigurationTemplate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,10 +164,10 @@
 		79B355BF25849EFE001CDE4C /* api-topics-show.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "api-topics-show.json"; sourceTree = "<group>"; };
 		79B355C225849F38001CDE4C /* TopicListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListViewReactor.swift; sourceTree = "<group>"; };
 		79B355C525849F45001CDE4C /* TopicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListViewController.swift; sourceTree = "<group>"; };
-		79BBEE7D257236F9002D9A47 /* QMUIConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUIConfigurationTemplate.h; sourceTree = "<group>"; };
-		79BBEE7E257236FA002D9A47 /* QMUIConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfigurationTemplate.m; sourceTree = "<group>"; };
 		79C09F0B25859A330051CF42 /* TopicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicItem.swift; sourceTree = "<group>"; };
 		79C09F0E25859A3D0051CF42 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		8C72CED825FF382C008A1367 /* QMUIConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUIConfigurationTemplate.h; sourceTree = "<group>"; };
+		8C72CED925FF382D008A1367 /* QMUIConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfigurationTemplate.m; sourceTree = "<group>"; };
 		E90E31DD998B17882177ED44 /* Pods-V2EX-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2EX-Swift.release.xcconfig"; path = "Target Support Files/Pods-V2EX-Swift/Pods-V2EX-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		F35B22B7183BD34C3CECFD48 /* Pods-V2EX-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2EX-Swift.debug.xcconfig"; path = "Target Support Files/Pods-V2EX-Swift/Pods-V2EX-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		FC44CCA77BE193A66A3DFDBE /* Pods_V2EX_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_V2EX_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -395,8 +395,8 @@
 		79B05ECC2571AD76001339B0 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				79BBEE7D257236F9002D9A47 /* QMUIConfigurationTemplate.h */,
-				79BBEE7E257236FA002D9A47 /* QMUIConfigurationTemplate.m */,
+				8C72CED825FF382C008A1367 /* QMUIConfigurationTemplate.h */,
+				8C72CED925FF382D008A1367 /* QMUIConfigurationTemplate.m */,
 				79B05ECD2571AD87001339B0 /* OCHelper.h */,
 				79B05ECE2571AD87001339B0 /* OCHelper.m */,
 			);
@@ -616,9 +616,9 @@
 				793F4A5125D4CA1E00C23A3F /* TopicDetailViewController.swift in Sources */,
 				793B509D25718CB70081C55E /* CollectionViewController.swift in Sources */,
 				79B05F532571B9DE001339B0 /* MineViewController.swift in Sources */,
-				79BBEE7F257236FA002D9A47 /* QMUIConfigurationTemplate.m in Sources */,
 				79B05EFF2571B188001339B0 /* R.generated.swift in Sources */,
 				7907B6AC25724A2D00EF94F0 /* V2EXAPI.swift in Sources */,
+				8C72CEDA25FF382D008A1367 /* QMUIConfigurationTemplate.m in Sources */,
 				79B05F5F2571BBB3001339B0 /* Runtime.swift in Sources */,
 				793F4A5725D4CB4A00C23A3F /* TopicTitleCell.swift in Sources */,
 				79B05F622571BBBE001339B0 /* Router.swift in Sources */,

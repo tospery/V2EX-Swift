@@ -27,3 +27,31 @@ func compare(_ left: ImageSource?, _ right: ImageSource?) -> Bool {
     }
     return false
 }
+
+func log(
+    _ message: @autoclosure () -> Any,
+    module: String = "Common",
+    level: DDLogLevel = DDDefaultLogLevel,
+    flag: DDLogFlag = .debug,
+    context: Int = 0,
+    file: StaticString = #file,
+    function: StaticString = #function,
+    line: UInt = #line,
+    tag: Any? = nil,
+    asynchronous async: Bool = asyncLoggingEnabled,
+    ddlog: DDLog = .sharedInstance
+) {
+    logger.print(
+        message(),
+        module: module,
+        level: level,
+        flag: flag,
+        context: context,
+        file: file,
+        function: function,
+        line: line,
+        tag: tag,
+        asynchronous: async,
+        ddlog: ddlog
+    )
+}

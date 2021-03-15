@@ -25,11 +25,11 @@ PODS:
     - RxSwift (~> 5.1)
   - ObjectMapper (4.2.0)
   - Parchment (3.0.0)
-  - QMUIKit/QMUICore (4.2.1):
+  - QMUIKit/QMUICore (4.2.2):
     - QMUIKit/QMUILog
     - QMUIKit/QMUIWeakObjectContainer
-  - QMUIKit/QMUILog (4.2.1)
-  - QMUIKit/QMUIWeakObjectContainer (4.2.1)
+  - QMUIKit/QMUILog (4.2.2)
+  - QMUIKit/QMUIWeakObjectContainer (4.2.2)
   - QuickLayout (3.0.0)
   - R.swift (5.3.0):
     - R.swift.Library (~> 5.3.0)
@@ -57,7 +57,7 @@ PODS:
     - RxSwift (~> 5)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
-  - RxSwift (5.1.1)
+  - RxSwift (5.1.2)
   - RxSwiftExt (5.2.0):
     - RxSwiftExt/Core (= 5.2.0)
     - RxSwiftExt/RxCocoa (= 5.2.0)
@@ -83,9 +83,10 @@ PODS:
     - Moya/RxSwift (= 14.0.0)
     - "NSObject+Rx (= 5.1.0)"
     - ObjectMapper (= 4.2.0)
-    - QMUIKit/QMUICore (= 4.2.1)
+    - QMUIKit/QMUICore (= 4.2.2)
     - ReactorKit (= 2.1.1)
     - RxDataSources (= 4.0.1)
+    - RxGesture (= 3.0.2)
     - RxOptional (= 4.1.0)
     - RxSwiftExt (= 5.2.0)
     - RxViewController (= 1.0.0)
@@ -135,7 +136,6 @@ DEPENDENCIES:
   - Parchment (= 3.0.0)
   - R.swift (= 5.3.0)
   - ReusableKit/RxSwift (= 3.0.0)
-  - RxGesture (= 3.0.2)
   - RxTheme (= 4.1.1)
   - SnapKit (= 5.0.1)
   - SWFrame (from `../SWFrame`)
@@ -212,7 +212,7 @@ SPEC CHECKSUMS:
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   Parchment: 5b54e4b271719a0e94e02898ab7c3c0a00525cfa
-  QMUIKit: 15294d6a350466e4a6f4df0333eac5bff474f995
+  QMUIKit: 5122015af36dc418d4133eee502532cc6207a277
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: 4170fb7161c67be3bc1a847040b79367d69c419f
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
@@ -223,12 +223,12 @@ SPEC CHECKSUMS:
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SWFrame: 19ecbc2bb7a79860a5f95b7e2fd899496e6c057a
+  SWFrame: 244e0ea155bf0647c741425bd9e3468139355d2b
   SwiftEntryKit: 96a2fa90b2631bbbfac50d18449e9ca3d0635f13
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
@@ -240,6 +240,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: ce725a1f95b2b86b6382c2f35bbbba536c1f9a2b
+PODFILE CHECKSUM: a40dbb0fb6b40fd1e7a184e5840465d433b46be7
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1
