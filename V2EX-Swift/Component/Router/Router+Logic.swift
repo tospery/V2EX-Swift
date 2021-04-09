@@ -9,7 +9,7 @@ import Foundation
 
 extension Router {
     
-    static func model(_ provider: SWFrame.ProviderType, _ navigator: NavigatorType) {
+    static func logic(_ provider: SWFrame.ProviderType, _ navigator: NavigatorType) {
         navigator.handle(self.toast.urlString) { url, _, _ -> Bool in
             guard let window = AppDependency.shared.window else { return false }
             if let message = url.queryParameters[Parameter.message] {

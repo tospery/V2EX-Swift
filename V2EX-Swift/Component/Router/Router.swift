@@ -16,20 +16,20 @@ enum Router: String {
     case test
     
     enum Web: String {
-        case agreement      = "/about"
-        case privacy        = "/mission"
+        case agreement      = "about"
+        case privacy        = "mission"
         
         var urlString: String {
-            UIApplication.shared.baseWebUrl + self.rawValue
+            "\(UIApplication.shared.baseWebUrl)/\(self.rawValue)"
         }
     }
     
     enum Topic: String {
-        case list           = "/list"
-        case detail         = "/detail"
+        case list
+        case detail
 
         var urlString: String {
-            UIApplication.shared.scheme + "://topic" + self.rawValue
+            "\(UIApplication.shared.scheme)://topic/\(self.rawValue)"
         }
     }
     
@@ -40,7 +40,7 @@ enum Router: String {
     static func initialize(_ provider: SWFrame.ProviderType, _ navigator: NavigatorType) {
         self.web(provider, navigator)
         self.page(provider, navigator)
-        self.model(provider, navigator)
+        self.logic(provider, navigator)
     }
     
 }
