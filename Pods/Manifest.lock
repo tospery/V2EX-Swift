@@ -7,6 +7,7 @@ PODS:
     - CocoaLumberjack/Core
   - DefaultsKit (0.2.0)
   - Differentiator (4.0.1)
+  - DynamicBlurView (4.1.0)
   - DZNEmptyDataSet (1.8.1)
   - EasyAnimation (2.2.1)
   - ESPullToRefresh (2.9.3)
@@ -25,12 +26,13 @@ PODS:
     - RxSwift (~> 5.1)
   - ObjectMapper (4.2.0)
   - Parchment (3.0.0)
-  - QMUIKit/QMUICore (4.2.2):
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
+  - QMUIKit/QMUICore (4.2.3):
     - QMUIKit/QMUILog
     - QMUIKit/QMUIWeakObjectContainer
-  - QMUIKit/QMUILog (4.2.2)
-  - QMUIKit/QMUIWeakObjectContainer (4.2.2)
-  - QuickLayout (3.0.0)
+  - QMUIKit/QMUILog (4.2.3)
+  - QMUIKit/QMUIWeakObjectContainer (4.2.3)
   - R.swift (5.3.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
@@ -73,7 +75,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - SnapKit (5.0.1)
-  - SWFrame (1.3.5):
+  - SWFrame (1.3.6):
     - BonMot (= 5.6.0)
     - CocoaLumberjack/Swift (= 3.7.0)
     - DZNEmptyDataSet (= 1.8.1)
@@ -83,7 +85,7 @@ PODS:
     - Moya/RxSwift (= 14.0.0)
     - "NSObject+Rx (= 5.1.0)"
     - ObjectMapper (= 4.2.0)
-    - QMUIKit/QMUICore (= 4.2.2)
+    - QMUIKit/QMUICore (= 4.2.3)
     - ReactorKit (= 2.1.1)
     - RxDataSources (= 4.0.1)
     - RxGesture (= 3.0.2)
@@ -92,8 +94,6 @@ PODS:
     - RxViewController (= 1.0.0)
     - SwifterSwift (= 5.2.0)
     - URLNavigator (= 2.3.0)
-  - SwiftEntryKit (1.2.6):
-    - QuickLayout (= 3.0.0)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
     - SwifterSwift/CoreAnimation (= 5.2.0)
@@ -134,12 +134,12 @@ DEPENDENCIES:
   - EasyAnimation (= 2.2.1)
   - IQKeyboardManagerSwift (= 6.5.6)
   - Parchment (= 3.0.0)
+  - PopupDialog (= 1.1.1)
   - R.swift (= 5.3.0)
   - ReusableKit/RxSwift (= 3.0.0)
   - RxTheme (= 4.1.1)
   - SnapKit (= 5.0.1)
   - SWFrame (from `../SWFrame`)
-  - SwiftEntryKit (= 1.2.6)
   - SwiftLint (= 0.41.0)
   - SwiftSoup (= 2.3.2)
   - Toast-Swift (= 5.0.1)
@@ -154,6 +154,7 @@ SPEC REPOS:
     - CocoaLumberjack
     - DefaultsKit
     - Differentiator
+    - DynamicBlurView
     - DZNEmptyDataSet
     - EasyAnimation
     - ESPullToRefresh
@@ -164,8 +165,8 @@ SPEC REPOS:
     - "NSObject+Rx"
     - ObjectMapper
     - Parchment
+    - PopupDialog
     - QMUIKit
-    - QuickLayout
     - R.swift
     - R.swift.Library
     - ReactorKit
@@ -180,7 +181,6 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
-    - SwiftEntryKit
     - SwifterSwift
     - SwiftLint
     - SwiftSoup
@@ -202,6 +202,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   DefaultsKit: 6c767941b2c3fe34c4d70e300e6c3b80c94964dd
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   EasyAnimation: 226d133d23ef0ef99ddfb8928ff2a9a4a77d1cfd
   ESPullToRefresh: 0d68daa602b343c81753a1b95e09fd0bfcddfd40
@@ -212,8 +213,8 @@ SPEC CHECKSUMS:
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   Parchment: 5b54e4b271719a0e94e02898ab7c3c0a00525cfa
-  QMUIKit: 5122015af36dc418d4133eee502532cc6207a277
-  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
+  QMUIKit: c047f987b14be9f48df47cb934a2d21ccd7ef4b6
   R.swift: 4170fb7161c67be3bc1a847040b79367d69c419f
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   ReactorKit: 6d894a20c3d508344320901cd8e386fde92df4b6
@@ -228,8 +229,7 @@ SPEC CHECKSUMS:
   RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SWFrame: 244e0ea155bf0647c741425bd9e3468139355d2b
-  SwiftEntryKit: 96a2fa90b2631bbbfac50d18449e9ca3d0635f13
+  SWFrame: e17c4602f1b1f0775c9cb61ae901f7dd3590e390
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
   SwiftSoup: f97bc4e988c7729d6457f9642f974c617a6e2510
@@ -240,6 +240,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: a40dbb0fb6b40fd1e7a184e5840465d433b46be7
+PODFILE CHECKSUM: 551e6e55ebf3e995b54f23e24cf463dc44fff78e
 
 COCOAPODS: 1.10.1

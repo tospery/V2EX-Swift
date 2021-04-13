@@ -12,7 +12,7 @@ target 'V2EX-Swift' do
   pod 'RxTheme', '4.1.1'
   pod 'DefaultsKit', '0.2.0'
   pod 'Cache', '6.0.0'
-  pod 'SwiftEntryKit', '1.2.6'
+  pod 'PopupDialog', '1.1.1'
   pod 'IQKeyboardManagerSwift', '6.5.6'
   pod 'ReusableKit/RxSwift', '3.0.0'
   pod 'Toast-Swift', '5.0.1'

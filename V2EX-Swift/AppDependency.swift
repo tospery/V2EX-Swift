@@ -26,7 +26,6 @@ import UIKit
 @_exported import Alamofire
 @_exported import Kingfisher
 @_exported import SwifterSwift
-@_exported import SwiftEntryKit
 @_exported import CocoaLumberjack
 @_exported import IQKeyboardManagerSwift
 @_exported import Toast_Swift

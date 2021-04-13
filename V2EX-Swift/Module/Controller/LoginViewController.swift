@@ -227,7 +227,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         // term
         self.scrollView.addSubview(self.termLabel)
         self.termLabel.left = self.termLabel.leftWhenCenter
-        self.termLabel.bottom = self.scrollView.height - safeBottom - 4
+        self.termLabel.bottom = self.scrollView.height - UIScreen.safeBottom - 4
         // error
         self.scrollView.addSubview(self.errorLabel)
         self.errorLabel.width = width

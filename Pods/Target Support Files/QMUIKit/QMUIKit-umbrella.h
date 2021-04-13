@@ -34,6 +34,7 @@
 #import "UIBezierPath+QMUI.h"
 #import "UIButton+QMUI.h"
 #import "UICollectionView+QMUI.h"
+#import "UICollectionViewCell+QMUI.h"
 #import "UIColor+QMUI.h"
 #import "UIControl+QMUI.h"
 #import "UIFont+QMUI.h"

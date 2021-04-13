@@ -42,8 +42,8 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.view.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(navigationContentTopConstant)
-            make.bottom.equalToSuperview().offset(-tabBarHeight)
+            make.top.equalToSuperview().offset(UINavigationBar.contentHeightConstant)
+            make.bottom.equalToSuperview().offset(-UITabBar.height)
         }
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self

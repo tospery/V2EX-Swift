@@ -40,7 +40,7 @@ enum Router: String {
     static func initialize(_ provider: SWFrame.ProviderType, _ navigator: NavigatorType) {
         self.web(provider, navigator)
         self.page(provider, navigator)
-        self.logic(provider, navigator)
+        self.dialog(provider, navigator)
     }
     
 }
