@@ -66,6 +66,7 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        
     }
     
     // MARK: - Lifecycle

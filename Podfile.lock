@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.1)
+  - Alamofire (5.4.2)
   - BonMot (5.6.0)
   - Cache (6.0.0)
   - CocoaLumberjack/Core (3.7.0)
@@ -75,7 +75,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - SnapKit (5.0.1)
-  - SWFrame (1.3.6):
+  - SWFrame (1.3.7):
     - BonMot (= 5.6.0)
     - CocoaLumberjack/Swift (= 3.7.0)
     - DZNEmptyDataSet (= 1.8.1)
@@ -196,7 +196,7 @@ EXTERNAL SOURCES:
     :path: "../SWFrame"
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
@@ -229,7 +229,7 @@ SPEC CHECKSUMS:
   RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SWFrame: e17c4602f1b1f0775c9cb61ae901f7dd3590e390
+  SWFrame: 1a21522acde6e0c808fca184cac3aa2947c636bb
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
   SwiftSoup: f97bc4e988c7729d6457f9642f974c617a6e2510
